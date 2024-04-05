@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <p> hola </p>
+      <p className=' font-bold hover:text-red-600'> hola </p>
     </>
   )
 }
