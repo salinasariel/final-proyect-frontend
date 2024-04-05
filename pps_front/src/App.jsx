@@ -1,11 +1,15 @@
 
 import './App.css'
+import Header from './components/Header'
 
 function App() {
   return (
-    <>
-      <p className=' font-bold hover:text-red-600'> Napolitano </p>
-    </>
+
+      <div className='App'>
+        <Header/>
+        <div className=' bg-white w-full h-screen'></div>
+      </div>
+
   )
 }
 
