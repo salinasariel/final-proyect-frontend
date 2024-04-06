@@ -1,15 +1,11 @@
 
 import './App.css'
-import Header from './components/Header'
+import AppRouter from '/src/router/AppRouter.jsx';
 
 function App() {
   return (
-
-      <div className='App'>
-        <Header/>
-        <div className=' bg-white w-full h-screen'></div>
-      </div>
-
+      
+          <AppRouter/>
   )
 }
 
