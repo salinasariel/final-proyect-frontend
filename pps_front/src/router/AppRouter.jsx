@@ -5,6 +5,7 @@ import Config from '../pages/Config'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
 import Messages from '../pages/Messages'
+import SignIn from '../pages/SignIn'
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
                 <Route path='/messages' element={<Messages/>} />
                 <Route path='/*' element={<h1>  404 </h1>} />
                 <Route path='/' element={<Home/>} />
+                <Route path='/signin' element={<SignIn/>} />
             </Routes>
   )
 }
