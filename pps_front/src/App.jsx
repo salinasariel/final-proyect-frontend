@@ -1,7 +1,7 @@
-import ChatBot from 'react-simple-chatbot'
+
 import './App.css'
 import AppRouter from '/src/router/AppRouter.jsx';
-import chatbotSteps from './ChatBot/ChatBotConfig';
+import CustomChatbot from './ChatBot/CustomChatBot';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
       <>
           <AppRouter/>
           
-        <ChatBot steps={chatbotSteps} headerTitle="Robotito" />
+          <CustomChatbot/>
 
       </>
   )
