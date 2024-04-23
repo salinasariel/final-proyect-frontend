@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className=" bg-[#E1E1E1] sticky top-0  ">
+    <div className=" bg-[#EEEEEE] sticky top-0  ">
       <div className="flex items-center md:flex-row md:justify-between justify-center p-1">
         <div className=" ">
           <Link to="/home">
@@ -95,7 +95,7 @@ const Header = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-7 h-7 hover:w-9 hover:h-9 text-neutral-700 active:text-red-500"
+                  className="w-7 h-7 hover:w-9 hover:h-9 text-neutral-700"
                 >
                   <path
                     fillRule="evenodd"

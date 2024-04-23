@@ -2,7 +2,7 @@ import LogoUtn from "../assets/images/logoutn.png";
 
 const Footer = () => {
   return (
-    <div className=" row-span-1 w-full bg-[#E1E1E1] bottom-0 h-auto pb-2 fixed">
+    <div className="  inset-x-0 bottom-0 row-span-1 w-full bg-[#EEEEEE] h-auto mb-0">
       <a href="https://www.utn.edu.ar/es/" target="blank">
         <img
           src={LogoUtn}
@@ -23,7 +23,7 @@ const Footer = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 fill="currentColor"
-                className="w-4 h-4"
+                className="w-4 h-4 text-[#00ADB5]"
               >
                 <path
                   fillRule="evenodd"
@@ -42,7 +42,7 @@ const Footer = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 fill="currentColor"
-                className="w-4 h-4"
+                className="w-4 h-4 text-[#00ADB5]"
               >
                 <path
                   fillRule="evenodd"
@@ -64,7 +64,7 @@ const Footer = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
                   fill="currentColor"
-                  className="w-4 h-4"
+                  className="w-4 h-4 text-[#00ADB5]"
                 >
                   <path
                     fillRule="evenodd"
