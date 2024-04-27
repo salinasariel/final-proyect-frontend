@@ -3,7 +3,7 @@ const JobOffer = ({ title, description, image, time, id, empresName }) => {
   return (
     <div className="">
       {" "}
-      <div className="rounded-xl border p-5 shadow-md bg-white w-90 md:max-w-sm   ">
+      <div className="rounded-xl border p-5 shadow-md bg-white w-90 md:max-w-sm  min-w-[390px] min-h-[280px]   ">
         <div className="flex w-full items-center justify-between border-b pb-3">
           <div className="flex items-center gap-2">
             <img

@@ -1,41 +1,43 @@
 import JobOffer from "./JobOffer";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import api from '../api';
 
 const DisplayJobOffer = () => {
+
+  const [offers, setOffers] = useState([]);
+
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+
+      try {
+        const response = await api.get('/OffersCotroller/GetAllOffers');
+        setOffers(response.data);
+      } catch (error) {
+        console.error('Error fetching offers:', error);
+      }
+    };
+
+    fetchOffers();
+  }, []);
   return (
-    <div className=" m-5 md:flex flex-row gap-5 md:flex-wrap">
-      <JobOffer
-        title="tituloprop"
-        description="Lorem ipsum dolr sit amet consectetur adipisicing elit. Vitae perspiciatis consequuntur, saepe sunt perferendis amet! Saepe exercitationem nisi cumque, consectetur dignissimos enim totam debitis quod ducimus culpa n."
-        image="imgprop"
-        time="timeprop"
-        id="0001"
-        empresName="empresaprop"
-      />
-      <JobOffer
-        title="tituloprop"
-        description="Lorem ipsum dolr sit amet consectetur adipisicing elit. Vitae perspiciatis consequuntur, saepe sunt perferendis amet! Saepe exercitationem nisi cumque, consectetur dignissimos enim totam debitis quod ducimus culpa n."
-        image="imgprop"
-        time="timeprop"
-        id="0001"
-        empresName="empresaprop"
-      />
-      <JobOffer
-        title="tituloprop"
-        description="Lorem ipsum dolr sit amet consectetur adipisicing elit. Vitae perspiciatis consequuntur, saepe sunt perferendis amet! Saepe exercitationem nisi cumque, consectetur dignissimos enim totam debitis quod ducimus culpa n."
-        image="imgprop"
-        time="timeprop"
-        id="0001"
-        empresName="empresaprop"
-      />
-      <JobOffer
-        title="tituloprop"
-        description="Lorem ipsum dolr sit amet consectetur adipisicing elit. Vitae perspiciatis consequuntur, saepe sunt perferendis amet! Saepe exercitationem nisi cumque, consectetur dignissimos enim totam debitis quod ducimus culpa n."
-        image="imgprop"
-        time="timeprop"
-        id="0001"
-        empresName="empresaprop"
-      />
-    </div>
+
+
+    <div className="m-5 md:flex flex-row gap-5 md:flex-wrap">
+  {offers.map((offers, index) => (
+    <JobOffer
+      key={index}
+      title={offers.tittle}
+      description={offers.about}
+      image={offers.image}
+      time={offers.location}
+      id={offers.offerId}
+      companyName={offers.companyName}
+    />
+  ))}
+</div>
+
   );
 };
 
