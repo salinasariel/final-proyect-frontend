@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import api from '../api';
 
+
 const DisplayJobOffer = () => {
 
   const [offers, setOffers] = useState([]);
@@ -24,7 +25,7 @@ const DisplayJobOffer = () => {
   return (
 
 
-    <div className="m-5 md:flex flex-row gap-5 md:flex-wrap">
+    <div className="m-5 md:flex flex-row gap-5 md:flex-wrap ">
   {offers.map((offers, index) => (
     <JobOffer
       key={index}

@@ -1,4 +1,5 @@
 import LogoUtn from "../assets/images/logoutn.png";
+import '../assets/animations.css';
 
 const Footer = () => {
   return (

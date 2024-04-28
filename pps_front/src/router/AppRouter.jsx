@@ -6,6 +6,7 @@ import Login from '../pages/Login'
 import Profile from '../pages/Profile'
 import Messages from '../pages/Messages'
 import SignIn from '../pages/SignIn'
+import CreateStudent from '../pages/CreateStudent'
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
                 <Route path='/*' element={<h1>  404 </h1>} />
                 <Route path='/' element={<Home/>} />
                 <Route path='/signin' element={<SignIn/>} />
+                <Route path='/createstudent' element={<CreateStudent/>} />
             </Routes>
   )
 }

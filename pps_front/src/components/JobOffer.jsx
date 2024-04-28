@@ -1,7 +1,8 @@
 // eslint-disable-next-line react/prop-types
+
 const JobOffer = ({ title, description, image, time, id, empresName }) => {
   return (
-    <div className="">
+    <div className="scale-up-center hoveranimation">
       {" "}
       <div className="rounded-xl border p-5 shadow-md bg-white w-90 md:max-w-sm  min-w-[390px] min-h-[280px]   ">
         <div className="flex w-full items-center justify-between border-b pb-3">

@@ -2,48 +2,52 @@ import Footer from "../components/Footer";
 
 const Login = () => {
   return (
-    <div>
-      <div className="w-auto mx-auto bg-[#E1E1E1]  rounded-xl">
-        <form className=" flex flex-col gap-4 pb-5 py-3 mx-10">
-          <h1 className=" text-center font-bold text-2xl">
-            Formulario de registro - Bolsa de trabajo UTN
-          </h1>
-          <div className="flex gap-10">
-            <div className="flex gap-1 flex-col">
-              <span> Nombre </span>
-              <input
-                type="text"
-                placeholder="Ingrese su nombre"
-                className=" rounded-md px-4 font-extralight"
-              ></input>
-            </div>
-
-            <div className="flex gap-1 flex-col">
-              <span className=" font-semibold"> Apellido </span>
-              <input
-                type="text"
-                placeholder="Ingrese su apellido"
-                className="rounded-md px-4 font-extralight"
-              ></input>
-            </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 ">
+      <div className="bg-white shadow-md rounded-lg p-8 max-w-md scale-up-center">
+        <h1 className="text-3xl font-bold text-center mb-4">
+        Inicio de Sesión Estudiantes
+        </h1>
+        <form className="flex flex-col gap-4">
+          <div className="flex flex-col">
+            <label htmlFor="nombre" className="font-semibold">
+              Legajo
+            </label>
+            <input
+              id="id"
+              type="text"
+              placeholder="Su legajo de cinco digitos."
+              className="rounded-md px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500"
+            />
           </div>
 
-          <div className=" bg-red-600">
-            <div className="flex gap-1 flex-col items-start">
-              <span> Tipo y Nro de Documento </span>
-              <input
-                type="text"
-                placeholder="Ingrese su nombre"
-                className=" rounded-md px-4 font-extralight"
-              ></input>
-              <input
-                type="text"
-                placeholder="Ingrese su nro. de documento"
-                className="rounded-md px-4 font-extralight"
-              ></input>
-            </div>
+          <div className="flex flex-col">
+            <label htmlFor="apellido" className="font-semibold">
+              Clave
+            </label>
+            <input
+              id="pass"
+              type="password"
+              placeholder="Su clave alfanumerica."
+              className="rounded-md px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500"
+            />
           </div>
+
+
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-md transition duration-300"
+          >
+            Iniciar Sesión
+          </button>
         </form>
+
+        <p className="text-center mt-4">
+          ¿No tiene cuenta de estudiante?{" "}
+          <a href="/createstudent" className="text-blue-500 hover:underline">
+            Solicítela
+          </a>
+          .
+        </p>
       </div>
       <Footer />
     </div>
