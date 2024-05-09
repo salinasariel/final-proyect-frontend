@@ -94,7 +94,7 @@ const CreateStudent = () => {
         </form>
         
       </div>
-      <Footer />
+      <Footer youarenterprise={false} />
     </div>
   );
 };

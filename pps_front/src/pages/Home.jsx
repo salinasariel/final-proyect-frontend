@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       <Header />
       <DisplayJobOffer />
-      <Footer />
+      <Footer youarenterprise={true} moreinfo={true} />
     </div>
   );
 };
