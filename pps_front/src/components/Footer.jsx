@@ -15,7 +15,7 @@ const Footer = ({ youarenterprise, moreinfo }) => {
         </div>
       )}
 
-      (
+      
       <a href="https://www.utn.edu.ar/es/" target="_blank">
         <img
           src={LogoUtn}

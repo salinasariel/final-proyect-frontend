@@ -4,9 +4,11 @@ import Header from "../components/Header";
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-      <DisplayJobOffer />
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Header logged={false} />
+      <div style={{ flex: 1 }}>
+        <DisplayJobOffer />
+      </div>
       <Footer youarenterprise={true} moreinfo={true} />
     </div>
   );
