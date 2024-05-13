@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const Header = ({ logged }) => {
+const Header = ({ logged, searchon,  onSearchChange }) => {
+  const [search, setSearch] = useState("");
+  
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    onSearchChange(value); 
+  };
   return (
     <>
       <div className=" bg-[#EEEEEE] sticky top-0  ">
         <div className="flex items-center md:flex-row md:justify-between justify-center p-1">
           <div className=" ">
             <Link to="/home">
-              <div className="flex items-center gap-1 mr-2">
+              <div className="flex items-center hover:opacity-80 gap-1 mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -28,22 +36,30 @@ const Header = ({ logged }) => {
               </div>
             </Link>
           </div>
-          <input
-            type="search"
-            placeholder="Buscar"
-            className=" rounded-xl pl-4 md:w-[400px]"
-          ></input>
+          {searchon && (
+            <input
+              
+              value={search}
+              type="text"
+              onChange={handleSearchChange}
+              placeholder="Buscar"
+              className=" scale-up-vertical-center rounded-xl pl-4 md:w-[400px]"
+            ></input>
+
+          )}
+
+
           <div>
-            <ul className="md:flex pd-  gap-2  items-center md:pl-0 md:gap-5 hidden">
+            <ul className="md:flex pd-  gap-2  items-center md:pl-0 md:gap-5 hidden ">
               <li></li>
               <li>
                 {" "}
                 <Link to="/home">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="http://www.w3.org/2000/svg "
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-7 h-7 hover:w-9 hover:h-9 text-neutral-700"
+                    className="w-7 h-7   text-neutral-700 hover:opacity-80"
                   >
                     <path
                       fillRule="evenodd"
@@ -64,7 +80,7 @@ const Header = ({ logged }) => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-7 h-7 hover:w-9 hover:h-9 text-neutral-700"
+                    className="w-7 h-7  text-neutral-700 hover:opacity-80"
                   >
                     <path
                       fillRule="evenodd"
@@ -80,7 +96,7 @@ const Header = ({ logged }) => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-7 h-7 hover:w-9 hover:h-9 text-neutral-700"
+                    className="w-7 h-7  text-neutral-700 hover:opacity-80"
                   >
                     <path
                       fillRule="evenodd"
@@ -96,7 +112,7 @@ const Header = ({ logged }) => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-7 h-7 hover:w-9 hover:h-9 text-neutral-700"
+                    className="w-7 h-7  text-neutral-700 hover:opacity-80"
                   >
                     <path
                       fillRule="evenodd"

@@ -1,14 +1,24 @@
 import DisplayJobOffer from "../components/DisplayJobOffer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useState} from "react";
 
 const Home = () => {
+  const [search, setSearch] = useState("");
+  
+  const handleSearchChange = (value) => {
+    setSearch(value);
+    console.log(value);
+  };
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Header logged={false} />
+      
+      <Header onSearchChange={handleSearchChange} search={search} setSearch={setSearch} searchon={true} />
+      
       <div style={{ flex: 1 }}>
-        <DisplayJobOffer />
+      <DisplayJobOffer busqueda={search} />
       </div>
+
       <Footer youarenterprise={true} moreinfo={true} />
     </div>
   );
