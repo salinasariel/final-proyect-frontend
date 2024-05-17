@@ -1,7 +1,7 @@
 
 import './App.css'
 import AppRouter from '/src/router/AppRouter.jsx';
-import CustomChatbot from './ChatBot/CustomChatBot';
+import CustomChatbot from './components/CustomChatBot';
 
 function App() {
 
