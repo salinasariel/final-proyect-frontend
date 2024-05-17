@@ -5,3 +5,19 @@
 
 .scale-up-vertical-center{animation:scale-up-vertical-center 0.3s} @keyframes scale-up-vertical-center{0%{transform:scaleY(.2)}100%{transform:scaleY(1)}}
 
+.scale-up-horizontal-right {
+    animation: scale-up-horizontal-right 0.4s;
+}
+
+@keyframes scale-up-horizontal-right {
+    0% {
+        transform: scaleX(0) translateX(100%);
+        transform-origin: right center;
+        opacity: 0;
+    }
+    100% {
+        transform: scaleX(1) translateX(0%);
+        transform-origin: right center;
+        opacity: 1;
+    }
+}
