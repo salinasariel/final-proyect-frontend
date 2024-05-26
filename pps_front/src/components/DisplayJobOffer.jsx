@@ -46,7 +46,7 @@ const DisplayJobOffer = ({ busqueda }) => {
   return (
     <>
       {!explain && (
-        <div className="m-5 md:flex flex-row gap-7 md:flex-wrap">
+        <div className="m-5 md:flex flex-row gap-7 md:flex-wrap p-auto">
           {empty && (<h1>No hay resultados. 😞</h1>)}
           {results.map((offer, index) => (
             <JobOffer

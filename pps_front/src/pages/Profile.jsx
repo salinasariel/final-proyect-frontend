@@ -107,8 +107,7 @@ const Profile = () => {
             </Typography>
 
             <a>
-              asbdafnasfdjasodimcikasmikcdn sdnssdaghsioaopasnskcnsixb
-              akokaocokd kasca aksoakd asndajdjk asdas sa
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repudiandae voluptatum alias. Necessitatibus, quia? Similique ducimus sunt exercitationem ullam. Recusandae quisquam accusantium doloremque alias perspiciatis asperiores consequatur quam quo distinctio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum accusantium tempora veniam, consequatur dolore ducimus voluptatibus velit reiciendis ex corporis deleniti? Aspernatur similique atque maiores illo. Ipsa tenetur nihil nam!
             </a>
           </div>
 

@@ -13,7 +13,7 @@ const ExplainJobOffer = ({ title, description, image, time, id, empresName, upda
     return (
         <div className="flex h-screen">
             <div className=""></div>
-            <div className="scale-up-horizontal-right hoveranimation flex justify-center items-center">
+            <div className="scale-up-horizontal-right hoveranimation flex justify-center items-center w-full h-screen">
                 <div className="rounded-xl border p-5 shadow-md bg-white w-90 w-full h-screen">
                     <div className="flex w-full items-center justify-between border-b pb-3">
                         <div className="flex items-center gap-2">
