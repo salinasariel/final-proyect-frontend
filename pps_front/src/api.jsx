@@ -1,14 +1,13 @@
-// api.ts
-import axios, { AxiosInstance } from 'axios';
+// api.js
+import axios from 'axios';
 
-const api: AxiosInstance = axios.create({
+const api = axios.create({
     baseURL: 'https://localhost:7047/api/',
     timeout: 100000,
     headers: {
         'Content-Type': 'application/json'
     }
 });
-
 
 api.interceptors.request.use(config => {
     const token = localStorage.getItem('token');
@@ -21,3 +20,4 @@ api.interceptors.request.use(config => {
 });
 
 export default api;
+

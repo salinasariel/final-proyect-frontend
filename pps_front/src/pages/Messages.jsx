@@ -1,10 +1,11 @@
 import Header from "../components/Header";
+import DisplayMyOffers from "../components/DisplayMyOffers";
 
 const Messages = () => {
   return (
     <div>
       <Header />
-      <h1> Estos son los msg </h1>
+      <DisplayMyOffers />
     </div>
   );
 };

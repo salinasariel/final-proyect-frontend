@@ -1,18 +1,29 @@
 import React, { useState } from "react";
-import api from '../api';
+import api from "../api";
 
-const JobOffer = ({ title, description, image, time, id, companyName, updateExplain, updateExplainData }) => {
+const JobOffer = ({
+  title,
+  description,
+  image,
+  time,
+  id,
+  companyName,
+  updateExplain,
+  updateExplainData,
+}) => {
   const [localExplain, setLocalExplain] = useState(false);
 
   const showDataById = async () => {
     try {
-      const response = await api.get(`/OffersCotroller/GetOfferById?offerId=${id}`);
+      const response = await api.get(
+        `/OffersCotroller/GetOfferById?offerId=${id}`
+      );
       console.log(response.data);
       setLocalExplain(true);
       updateExplain(true);
       updateExplainData(response.data);
     } catch (error) {
-      console.error('Error fetching offers:', error);
+      console.error("Error fetching offers:", error);
     }
   };
 
@@ -29,7 +40,10 @@ const JobOffer = ({ title, description, image, time, id, companyName, updateExpl
             <div className="text-lg font-bold text-black">{companyName}</div>
           </div>
           <div className="flex items-center space-x-8">
-            <button onClick={showDataById} className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white">
+            <button
+              onClick={showDataById}
+              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white"
+            >
               Postularse
             </button>
             <div className="text-xs text-neutral-500">#{id}</div>

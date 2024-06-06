@@ -1,42 +1,42 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import JobOffer from "./JobOffer";
 import ExplainJobOffer from "./ExplainJobOffer";
 import api from "../api";
+import useTokenData from "../hooks/useTokenData";
 
-const DisplayJobOffer = ({ busqueda }) => {
+const DisplayMyOffers = () => {
+  const { tokenData } = useTokenData();
+
   const [offers, setOffers] = useState([]);
   const [explain, setExplain] = useState(false);
   const [explainData, setExplainData] = useState(null);
-  const [forceRender, setForceRender] = useState(false);
 
   const updateExplain = (value) => {
     setExplain(value);
   };
+
   const showData = async () => {
     try {
-      const response = await api.get("/OffersCotroller/GetAllOffers");
-      console.log(response.data);
-      setOffers(response.data);
+      if (tokenData && tokenData.userid) {
+        const userIdInt = parseInt(tokenData.userid, 10);
+        const response = await api.get(
+          `/OffersCotroller/GetOffersByEnterprise?enterpriseId=${userIdInt}`
+        );
+        setOffers(response.data);
+      } else {
+        console.error("tokenData o tokenData.userid es nulo.");
+      }
     } catch (error) {
-      console.error("Error fetching offers:", error);
+      console.error("Error al obtener las ofertas:", error);
     }
   };
 
   useEffect(() => {
     showData();
-  }, []);
+  }, [tokenData]);
 
-  let results = [];
+  let results = offers;
   let empty = false;
-
-  if (!busqueda) {
-    results = offers;
-  } else {
-    results = offers.filter((data) =>
-      data.tittle.toLowerCase().includes(busqueda.toLowerCase())
-    );
-    empty = results.length === 0;
-  }
 
   const updateExplainData = (data) => {
     setExplainData(data);
@@ -46,7 +46,7 @@ const DisplayJobOffer = ({ busqueda }) => {
     <>
       {!explain && (
         <div className="m-5 md:flex flex-row gap-7 md:flex-wrap p-auto">
-          {empty && <h1>No hay resultados. 😞</h1>}
+          {empty && <h1>No hay ofertas publicadas 😞</h1>}
           {results.map((offer, index) => (
             <JobOffer
               key={index}
@@ -101,4 +101,4 @@ const DisplayJobOffer = ({ busqueda }) => {
   );
 };
 
-export default DisplayJobOffer;
+export default DisplayMyOffers;
