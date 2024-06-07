@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import api from "../api";
 
 const JobOffer = ({
@@ -37,7 +37,7 @@ const JobOffer = ({
               src={image}
               alt=""
             ></img>
-            <div className="text-lg font-bold text-black">{companyName}</div>
+            <div className="text-lg font-bold text-black"></div>
           </div>
           <div className="flex items-center space-x-8">
             <button
@@ -56,12 +56,6 @@ const JobOffer = ({
             <h1>{time}</h1>
           </div>
           <div className="text-sm text-neutral-600">{description}</div>
-          <ul className="flex text-xs my-2 gap-2 text-[#00ADB5]">
-            <li>#etiqueta1</li>
-            <li>#etiqueta1</li>
-            <li>#etiqueta1</li>
-            <li>#etiqueta1</li>
-          </ul>
         </div>
       </div>
     </div>
