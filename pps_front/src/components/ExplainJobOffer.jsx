@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext, AuthProvider } from "../AuthProvider";
+import { toast } from "react-toastify";
+
+import { useNavigate } from 'react-router-dom';
 
 const ExplainJobOffer = ({ title, description, image, time, id, empresName, updateExplain }) => {
     const [localExplain, setLocalExplain] = useState(false);
+    const { isLoggedIn, logout } = useContext(AuthContext);
 
     const closeExplain = () => {
         console.log("Cerrando explicación");
         setLocalExplain(false);
         updateExplain(false);
     };
+    const continueOffer = () => {
+        if (!isLoggedIn){
+            toast.warning("Debe ingresar para postularse a una oferta.", {
+                position: "bottom-right"
+              });
+
+        }
+        else {
+            
+        }
+    }
+
 
     return (
         <div className="flex h-screen">
@@ -21,7 +38,7 @@ const ExplainJobOffer = ({ title, description, image, time, id, empresName, upda
                             <div className="text-lg font-bold text-black">{empresName}</div>
                         </div>
                         <div className="flex items-center space-x-8">
-                            <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white">
+                            <button onClick={continueOffer} className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white">
                                 Continuar
                             </button>
                             <div className="text-xs text-neutral-500">#{id}</div>
