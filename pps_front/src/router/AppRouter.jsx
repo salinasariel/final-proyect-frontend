@@ -9,6 +9,13 @@ import SignIn from '../pages/SignIn'
 import CreateStudent from '../pages/CreateStudent'
 import CreateEnterprise from '../pages/CreateEnterprise'
 import NotFound from '../pages/NotFound'
+import SendOffer from '../components/SendOffer'
+
+const SendOfferWrapper = () => {
+    const location = useLocation();
+    const { state } = location;
+    return <SendOffer {...state} />;
+};
 
 const AppRouter = () => {
   return (
@@ -23,6 +30,7 @@ const AppRouter = () => {
                 <Route path='/signin' element={<SignIn/>} />
                 <Route path='/createstudent' element={<CreateStudent/>} />
                 <Route path='/createnterprise' element={<CreateEnterprise/>} />
+                <Route path='/sendoffer' element={<SendOffer/>} />
             </Routes>
   )
 }

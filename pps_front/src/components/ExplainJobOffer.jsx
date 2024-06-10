@@ -1,40 +1,39 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext, AuthProvider } from "../AuthProvider";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthProvider";
 import { toast } from "react-toastify";
-
-import { useNavigate } from 'react-router-dom';
 
 const ExplainJobOffer = ({ title, description, image, time, id, empresName, updateExplain }) => {
     const [localExplain, setLocalExplain] = useState(false);
-    const { isLoggedIn, logout } = useContext(AuthContext);
+    const { isLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const closeExplain = () => {
         console.log("Cerrando explicación");
         setLocalExplain(false);
         updateExplain(false);
     };
+
     const continueOffer = () => {
-        if (!isLoggedIn){
+        if (!isLoggedIn) {
             toast.warning("Debe ingresar para postularse a una oferta.", {
                 position: "bottom-right"
-              });
-
+            });
+        } else {
+            navigate('/sendoffer', {
+                state: { title, image, id, empresName }
+            });
         }
-        else {
-            
-        }
-    }
-
+    };
 
     return (
         <div className="flex h-screen">
             <div className=""></div>
             <div className="scale-up-horizontal-right hoveranimation flex justify-center items-center w-full h-screen">
-                <div className="rounded-xl border p-5 shadow-md bg-white w-90 w-full h-screen">
+                <div className="rounded-xl border p-5 shadow-md bg-white w-full h-screen">
                     <div className="flex w-full items-center justify-between border-b pb-3">
                         <div className="flex items-center gap-2">
-                            <img className="h-8 w-8 rounded-full bg-slate-400" src={image} alt=""></img>
+                            <img className="h-8 w-8 rounded-full bg-slate-400" src={image} alt="" />
                             <div className="text-lg font-bold text-black">{empresName}</div>
                         </div>
                         <div className="flex items-center space-x-8">
@@ -44,13 +43,10 @@ const ExplainJobOffer = ({ title, description, image, time, id, empresName, upda
                             <div className="text-xs text-neutral-500">#{id}</div>
                         </div>
                         <button onClick={closeExplain}>
-
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-
-
                     </div>
 
                     <div className="mt-4 mb-6">

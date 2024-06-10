@@ -24,18 +24,18 @@ const CreateStudent = () => {
       fileNumber: parseInt(fileNumber, 10),
       dni: 0,
       cuil: 0,
-      phoneNumber: "string",
-      city: "string",
-      address: "string",
+      phoneNumber: "Sin completar",
+      city: "Sin completar",
+      address: "Sin completar",
       birthDate: "2024-06-08T17:29:27.409Z",
-      sex: "string",
-      civilStatus: "string",
-      tittle: "string",
+      sex: "Sin completar",
+      civilStatus: "Sin completar",
+      tittle: "Sin completar",
       careerAge: 0,
       englishLevel: 0,
-      cvFile: "string",
-      highSchoolFile: "string",
-      coursesFile: "string"
+      cvFile: "Sin completar",
+      highSchoolFile: "Sin completar",
+      coursesFile: "Sin completar"
     };
 
     try {
