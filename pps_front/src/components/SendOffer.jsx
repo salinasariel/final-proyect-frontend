@@ -28,7 +28,8 @@ const SendOffer = () => {
                 applicationState: 0
             };
             const response = await api.post("/Application/ApplyForAnOffer", applicationData);
-            toast.success(`Se postuló correctamente. ${response.data}`);
+            toast.success(`Se postuló correctamente.`);
+            setTimeout(goToHome, 2000);
           } else {
             console.error("tokenData o tokenData.userid es nulo.");
           }

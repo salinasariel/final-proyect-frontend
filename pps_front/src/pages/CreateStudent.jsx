@@ -16,30 +16,18 @@ const CreateStudent = () => {
     e.preventDefault();
     const studentData = {
 
-      name: name,
       email: email,
       password: password,
-      rol: 0,
-      userState: true,
-      fileNumber: parseInt(fileNumber, 10),
+      fileNumber: fileNumber,
+      name: name,
       dni: 0,
-      cuil: 0,
-      phoneNumber: "Sin completar",
-      city: "Sin completar",
-      address: "Sin completar",
-      birthDate: "2024-06-08T17:29:27.409Z",
-      sex: "Sin completar",
-      civilStatus: "Sin completar",
-      tittle: "Sin completar",
-      careerAge: 0,
-      englishLevel: 0,
-      cvFile: "Sin completar",
-      highSchoolFile: "Sin completar",
-      coursesFile: "Sin completar"
+      rol: 0,
+      userState: true
+
     };
 
     try {
-      const response = await api.post("/User/CreateStudents", studentData);
+      const response = await api.post("/User/CreateStudent", studentData);
       toast.success(`Estudiante creado correctamente con ID: ${response.data}`);
     } catch (error) {
       console.error("Error creando estudiante:", error);

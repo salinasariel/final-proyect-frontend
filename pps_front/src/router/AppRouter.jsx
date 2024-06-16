@@ -10,6 +10,7 @@ import CreateStudent from '../pages/CreateStudent'
 import CreateEnterprise from '../pages/CreateEnterprise'
 import NotFound from '../pages/NotFound'
 import SendOffer from '../components/SendOffer'
+import Vermifoto from '../pages/vermifoto'
 
 const SendOfferWrapper = () => {
     const location = useLocation();
@@ -31,6 +32,7 @@ const AppRouter = () => {
                 <Route path='/createstudent' element={<CreateStudent/>} />
                 <Route path='/createnterprise' element={<CreateEnterprise/>} />
                 <Route path='/sendoffer' element={<SendOffer/>} />
+                <Route path='/vermifoto' element={<Vermifoto/>} />
             </Routes>
   )
 }
