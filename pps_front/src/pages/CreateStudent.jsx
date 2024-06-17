@@ -1,29 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { TextField, Button, Typography } from "@mui/material";
-import Header from '../components/Header';
+import Header from "../components/Header";
 import Footer from "../components/Footer";
-import api from '../api';
+import api from "../api";
 
 import { toast } from "react-toastify";
 
 const CreateStudent = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [fileNumber, setFileNumber] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fileNumber, setFileNumber] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const studentData = {
-
       email: email,
       password: password,
       fileNumber: fileNumber,
       name: name,
       dni: 0,
       rol: 0,
-      userState: true
-
+      userState: true,
     };
 
     try {
@@ -39,7 +37,7 @@ const CreateStudent = () => {
     <>
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className='max-w-[50%]'>
+        <div className="max-w-[50%]">
           <form onSubmit={handleSubmit}>
             <Typography variant="h6" style={{ paddingTop: "5px" }}>
               <b>Solicitud de alta estudiantes</b>
@@ -79,7 +77,7 @@ const CreateStudent = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <TextField
-              id='email'
+              id="email"
               variant="outlined"
               label="Email"
               fullWidth
@@ -95,7 +93,6 @@ const CreateStudent = () => {
         </div>
       </div>
       <Footer youarenterprise={false} />
-
     </>
   );
 };

@@ -17,6 +17,7 @@ const DisplayMyOffers = () => {
 
   const showData = async () => {
     try {
+      A;
       if (tokenData && tokenData.userid) {
         const userIdInt = parseInt(tokenData.userid, 10);
         const response = await api.get(
@@ -25,6 +26,7 @@ const DisplayMyOffers = () => {
         setOffers(response.data);
       } else {
         console.error("tokenData o tokenData.userid es nulo.");
+        A;
       }
     } catch (error) {
       console.error("Error al obtener las ofertas:", error);
