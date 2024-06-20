@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import DisplayMyOffers from "../components/DisplayMyOffers";
 
-const Messages = () => {
+const Panel = () => {
   return (
     <div>
       <Header />
@@ -10,4 +10,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default Panel;

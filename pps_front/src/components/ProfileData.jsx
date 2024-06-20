@@ -22,12 +22,15 @@ import {
   Radio,
   FormControl,
   FormLabel,
+  
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const ProfileData = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -35,6 +38,7 @@ const ProfileData = () => {
   const [userInfo, setUserInfo] = useState("");
   const [coursesFile, setCoursesFile] = useState("");
   const { tokenData } = useTokenData();
+  const navigate = useNavigate();
   const handleClose = () => {
     setOpen(false);
   };
@@ -59,6 +63,10 @@ const ProfileData = () => {
     }
   };
 
+  
+  const gotopdf = () =>{
+    navigate('/downloadcv')
+  }
   useEffect(() => {
     if (tokenData) {
       showDataById();
@@ -92,7 +100,7 @@ const ProfileData = () => {
         <div className="scale-up-center bg-white shadow-md rounded-lg p-8 max-w-3xl mx-auto">
           <div className="flex items-center relative">
             <Fab
-              onClick={handleOpen}
+              onClick={gotopdf}
               color="secondary"
               aria-label="edit"
               style={{
@@ -107,6 +115,26 @@ const ProfileData = () => {
                 minHeight: "32px",
               }}
             >
+           
+              <FileDownloadIcon />
+            </Fab>
+            <Fab
+              onClick={handleOpen}
+              color="secondary"
+              aria-label="edit"
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                marginTop: "0.25rem",
+                marginRight: "3.2rem",
+                width: "32px",
+                height: "32px",
+                minWidth: "32px",
+                minHeight: "32px",
+              }}
+            >
+           
               <EditIcon />
             </Fab>
 

@@ -4,13 +4,14 @@ import Home from '../pages/Home'
 import Config from '../pages/Config'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
-import Messages from '../pages/Messages'
+import Panel from '../pages/Panel'
 import SignIn from '../pages/SignIn'
 import CreateStudent from '../pages/CreateStudent'
 import CreateEnterprise from '../pages/CreateEnterprise'
 import NotFound from '../pages/NotFound'
 import SendOffer from '../components/SendOffer'
 import Vermifoto from '../pages/vermifoto'
+import DownloadCV from '../pages/DownloadCV'
 
 const SendOfferWrapper = () => {
     const location = useLocation();
@@ -25,7 +26,7 @@ const AppRouter = () => {
                 <Route path='/config' element={<Config/>} />
                 <Route path='/login' element={<Login/>} />
                 <Route path='/profile' element={<Profile/>} />
-                <Route path='/messages' element={<Messages/>} />
+                <Route path='/panel' element={<Panel/>} />
                 <Route path='/*' element={<NotFound/>} />
                 <Route path='/' element={<Home/>} />
                 <Route path='/signin' element={<SignIn/>} />
@@ -33,6 +34,7 @@ const AppRouter = () => {
                 <Route path='/createnterprise' element={<CreateEnterprise/>} />
                 <Route path='/sendoffer' element={<SendOffer/>} />
                 <Route path='/vermifoto' element={<Vermifoto/>} />
+                <Route path='/downloadcv' element={<DownloadCV/>} />
             </Routes>
   )
 }
