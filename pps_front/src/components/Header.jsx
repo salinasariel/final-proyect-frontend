@@ -66,7 +66,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/EnterprisePanel">
+                    <Link to="/Profile">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"

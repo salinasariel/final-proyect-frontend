@@ -64,9 +64,12 @@ const ProfileData = () => {
   };
 
   
-  const gotopdf = () =>{
-    navigate('/downloadcv')
-  }
+  const gotopdf = () => {
+    navigate('/downloadcv', {
+      state: { userInfo }
+    });
+  };
+
   useEffect(() => {
     if (tokenData) {
       showDataById();

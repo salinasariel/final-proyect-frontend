@@ -25,7 +25,7 @@ const CreateStudent = () => {
     };
 
     try {
-      const response = await api.post("/User/CreateStudent", studentData);
+      const response = await api.post("User/register_student", studentData);
       toast.success(`Estudiante creado correctamente con ID: ${response.data}`);
     } catch (error) {
       console.error("Error creando estudiante:", error);

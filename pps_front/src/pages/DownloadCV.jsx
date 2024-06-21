@@ -1,12 +1,5 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import LogoUtn from "../assets/images/logo-utn.png";
-import useTokenData from "../hooks/useTokenData";
-import api from "../api";
-import * as React from "react";
-import { AuthContext } from "../AuthProvider";
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
     Avatar,
     Typography,
@@ -15,31 +8,27 @@ import {
 } from "@mui/material";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import LogoUtn from "../assets/images/logo-utn.png";
 
 const DownloadCV = () => {
-    const { isLoggedIn } = useContext(AuthContext);
-    const [userInfo, setUserInfo] = useState("");
-    const [coursesFile, setCoursesFile] = useState("");
-    const { tokenData } = useTokenData();
     const navigate = useNavigate();
-    const showDataById = async () => {
-        try {
-            if (tokenData && tokenData.userid) {
-                const userIdInt = parseInt(tokenData.userid, 10);
-                const response = await api.get(`/User/GetStudentsById/${userIdInt}`);
-                setCoursesFile(response.data.profilePhoto);
-                setUserInfo(response.data);
-            } else {
-                console.error("tokenData o tokenData.userid es nulo.");
-            }
-        } catch (error) {
-            console.error("Error fetching user data:", error);
+    const location = useLocation();
+    const { userInfo } = location.state || {};
+
+    useEffect(() => {
+        if (userInfo) {
+            setTimeout(() => {
+                handleGeneratePDF();
+                setTimeout(goToHome, 100); 
+            }, 100);
         }
-    };
+    }, [userInfo]);
 
     const handleGeneratePDF = () => {
         const input = document.getElementById('pdf-content');
-        const scale = 3; 
+        const scale = 3;
         html2canvas(input, { scale }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({
@@ -51,23 +40,17 @@ const DownloadCV = () => {
             pdf.save(`CV - ${userInfo.name}.pdf`);
         });
     };
-    
-  const goToHome = () =>{
-    navigate('/profile')
-  }
-    useEffect(() => {
-        if (tokenData) {
-            showDataById();
-            setTimeout(handleGeneratePDF, 1000);
-            setTimeout(goToHome, 1000);
-            
-        }
-    }, [tokenData]);
 
+    const goToHome = () => {
+        navigate('/profile');
+    }
+
+    if (!userInfo) {
+        return <Typography variant="h6" style={{ textAlign: 'center', marginTop: '20px' }}>No se encontró la información del usuario.</Typography>
+    }
 
     return (
         <div>
-            
             <div id="pdf-content" style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} style={{ textAlign: 'center' }}>
@@ -76,14 +59,13 @@ const DownloadCV = () => {
                     <Grid item xs={12} style={{ textAlign: 'center', marginTop: 20 }}>
                         <Avatar
                             alt="User photo"
-                            src={`data:image/jpeg;base64,${coursesFile}`}
+                            src={userInfo.photo}
                             sx={{ width: 200, height: 200, margin: '0 auto' }}
                         />
                     </Grid>
-                    
                     <Grid item xs={12} style={{ textAlign: 'center', marginTop: 20 }}>
                         <Typography variant="h4">{userInfo.name}</Typography>
-                        <Typography variant="h5">{userInfo.tittle}</Typography>
+                        <Typography variant="h5">{userInfo.title}</Typography>
                     </Grid>
                     <Grid item xs={12} style={{ marginTop: 5 }}>
                         <Typography>{userInfo.experience}</Typography>
@@ -112,9 +94,9 @@ const DownloadCV = () => {
                 </Grid>
             </div>
             <div style={{ textAlign: 'center', marginTop: 20 }}>
-                
+                <Button variant="contained" color="primary" onClick={handleGeneratePDF}>Descargar CV</Button>
             </div>
-            
+            <Footer />
         </div>
     );
 };
