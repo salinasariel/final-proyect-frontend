@@ -100,9 +100,8 @@ const ProfileData = () => {
       <Header />
       {showChangePicture && <ChangeUserPicture />}
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <div className="scale-up-center bg-white shadow-md rounded-lg p-8 max-w-3xl mx-auto">
-          <div className="flex items-center relative">
-            <Fab
+        <div className="scale-up-center bg-white shadow-md rounded-lg p-8 max-w-3xl mx-auto relative">
+        <Fab
               onClick={gotopdf}
               color="secondary"
               aria-label="edit"
@@ -140,6 +139,7 @@ const ProfileData = () => {
            
               <EditIcon />
             </Fab>
+          <div className="flex items-center relative">
 
             <div className="relative">
               <Avatar
@@ -184,34 +184,24 @@ const ProfileData = () => {
             </div>
           </div>
           <div className="mt-4">
-            <Typography variant="h5" fontWeight="bold">
+            {userInfo.tittle}
+          </div>
+          <Divider></Divider>
+          <div>
+          <Typography variant="h5" fontWeight="bold">
               Acerca de mí...
             </Typography>
             <a>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-              repudiandae voluptatum alias. Necessitatibus, quia? Similique
-              ducimus sunt exercitationem ullam. Recusandae quisquam accusantium
-              doloremque alias perspiciatis asperiores consequatur quam quo
-              distinctio! Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Ipsum accusantium tempora veniam, consequatur dolore ducimus
-              voluptatibus velit reiciendis ex corporis deleniti? Aspernatur
-              similique atque mayores illo. Ipsa tenetur nihil nam!
+              {userInfo.about}
             </a>
           </div>
-
           <div>
             <Typography variant="h5" fontWeight="bold">
               Experiencias profesionales
             </Typography>
             <Typography variant="subtitle1" fontWeight="bold">
-              escuela
-            </Typography>
-            <Typography variant="body1">trabaje en la escuela</Typography>
-            <Divider />
-            <Typography variant="subtitle1" fontWeight="bold">
-              facultad
-            </Typography>
-            <Typography variant="body1">trabaje en la facultad</Typography>
+              {userInfo.experience}
+              </Typography>
           </div>
 
           <div>
@@ -237,7 +227,7 @@ const ProfileData = () => {
       </div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title" style={{ textAlign: "center", backgroundColor: "#EEEEEE" }}>
-          Editar Información
+          Editar perfil
         </DialogTitle>
         <DialogContent>
           <form>
@@ -261,6 +251,7 @@ const ProfileData = () => {
               required
               fullWidth
               variant="outlined"
+              color="secondary"
             />
             <TextField
               margin="normal"
@@ -273,10 +264,11 @@ const ProfileData = () => {
                 shrink: true,
               }}
               variant="outlined"
+              color="secondary"
             />
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={4}>
-                <TextField fullWidth id="tipo-documento" label="Tipo" variant="outlined" required select>
+                <TextField fullWidth id="tipo-documento" label="Tipo" variant="outlined" color="secondary" required select>
                   {/*aca se agrega las opciones para el tipo de documento
                   {LISTA.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -286,36 +278,36 @@ const ProfileData = () => {
                 </TextField>
               </Grid>
               <Grid item xs={8}>
-                <TextField fullWidth id="numero-documento" label="Número de Documento" required variant="outlined" />
+                <TextField fullWidth id="numero-documento" label="Número de Documento" required variant="outlined" color="secondary"/>
               </Grid>
             </Grid>
-            <TextField variant="outlined" label="CUIL o CUIT" fullWidth required margin="normal" />
+            <TextField variant="outlined" label="CUIL o CUIT" fullWidth required margin="normal" color="secondary"/>
             <FormControl>
-              <FormLabel id="demo-row-radio-buttons-group-label">Estado Civil</FormLabel>
+              <FormLabel id="demo-row-radio-buttons-group-label" color="secondary">Estado Civil</FormLabel>
               <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                <FormControlLabel value="" control={<Radio />} label="Soltero" />
-                <FormControlLabel value="" control={<Radio />} label="Casado" />
-                <FormControlLabel value="" control={<Radio />} label="Divorciado" />
-                <FormControlLabel value="" control={<Radio />} label="viudo" />
+                <FormControlLabel value="" control={<Radio color="secondary" />} label="Soltero" />
+                <FormControlLabel value="" control={<Radio color="secondary"/>} label="Casado" />
+                <FormControlLabel value="" control={<Radio color="secondary"/>} label="Divorciado" />
+                <FormControlLabel value="" control={<Radio color="secondary"/>} label="viudo" />
               </RadioGroup>
             </FormControl>
             <FormControl>
-              <FormLabel id="demo-row-radio-buttons-group-label">Genero</FormLabel>
+              <FormLabel id="demo-row-radio-buttons-group-label" color="secondary">Genero</FormLabel>
               <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
-                <FormControlLabel value="Femenino" control={<Radio />} label="Femenino" />
-                <FormControlLabel value="Otro" control={<Radio />} label="Otro" />
+                <FormControlLabel value="Masculino" control={<Radio color="secondary"/>} label="Masculino" />
+                <FormControlLabel value="Femenino" control={<Radio color="secondary"/>} label="Femenino" />
+                <FormControlLabel value="Otro" control={<Radio color="secondary"/>} label="Otro" />
               </RadioGroup>
             </FormControl>
-            <TextField variant="outlined" label="Correo Electrónico" fullWidth required margin="normal" />
-            <TextField variant="outlined" label="Teléfono" fullWidth required margin="normal" />
+            <TextField variant="outlined" label="Correo Electrónico" fullWidth required margin="normal" color="secondary"/>
+            <TextField variant="outlined" label="Teléfono" fullWidth required margin="normal" color="secondary"/>
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="secondary">
             Cancelar
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="secondary">
             Guardar
           </Button>
         </DialogActions>
