@@ -59,8 +59,8 @@ const DownloadCV = () => {
                     <Grid item xs={12} style={{ textAlign: 'center', marginTop: 20 }}>
                         <Avatar
                             alt="User photo"
-                            src={userInfo.photo}
-                            sx={{ width: 200, height: 200, margin: '0 auto' }}
+                            src={`data:image/jpeg;base64,${userInfo.profilePhoto}`}
+                            sx={{ width: 250, height: 250, margin: '0 auto' }}
                         />
                     </Grid>
                     <Grid item xs={12} style={{ textAlign: 'center', marginTop: 20 }}>
@@ -68,7 +68,7 @@ const DownloadCV = () => {
                         <Typography variant="h5">{userInfo.title}</Typography>
                     </Grid>
                     <Grid item xs={12} style={{ marginTop: 5 }}>
-                        <Typography>{userInfo.experience}</Typography>
+                        <Typography>{userInfo.about}</Typography>
                     </Grid>
                     <Grid item xs={12} style={{ marginTop: 20 }}>
                         <Typography variant="h6">Datos personales:</Typography>

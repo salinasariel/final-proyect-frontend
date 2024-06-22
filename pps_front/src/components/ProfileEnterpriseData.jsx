@@ -32,7 +32,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
-const ProfileData = () => {
+const ProfileEnterpriseData = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
   const [userInfo, setUserInfo] = useState("");
@@ -51,7 +51,7 @@ const ProfileData = () => {
       if (tokenData && tokenData.userid) {
         const userIdInt = await parseInt(tokenData.userid, 10);
         console.log(userIdInt);
-        const response = await api.get(`/User/GetStudentsById/${userIdInt}`);
+        const response = await api.get(`/User/GetEnterpriseById/${userIdInt}`);
         setCoursesFile(response.data.profilePhoto);
         setUserInfo(response.data);
         console.log("traigo fotito check");
@@ -99,27 +99,9 @@ const ProfileData = () => {
     <div>
       <Header />
       {showChangePicture && <ChangeUserPicture />}
-      <div className="flex flex-col  items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <div className="scale-up-center bg-white shadow-md rounded-lg p-8 max-w-3xl mx-auto relative">
-        <Fab
-              onClick={gotopdf}
-              color="secondary"
-              aria-label="edit"
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                marginTop: "0.25rem",
-                marginRight: "0.25rem",
-                width: "32px",
-                height: "32px",
-                minWidth: "32px",
-                minHeight: "32px",
-              }}
-            >
-           
-              <FileDownloadIcon />
-            </Fab>
+      
             <Fab
               onClick={handleOpen}
               color="secondary"
@@ -178,7 +160,7 @@ const ProfileData = () => {
                 </li>
                 <li>
                   <PhoneIphoneOutlinedIcon />
-                  <span>{userInfo.PhoneNumber}</span>
+                  <span>{userInfo.contactPhone}</span>
                 </li>
               </ul>
             </div>
@@ -189,19 +171,29 @@ const ProfileData = () => {
           <Divider></Divider>
           <div>
           <Typography variant="h5" fontWeight="bold">
-              Acerca de mí...
+              Acerca de la compañia
             </Typography>
-            <a>
+            <p>
               {userInfo.about}
-            </a>
+            </p>
           </div>
           <div>
-            <Typography variant="h5" fontWeight="bold">
-              Experiencias profesionales
-            </Typography>
+            <Typography variant="h8" fontWeight="bold">
+              Rubro: {userInfo.enterpriseType}
+            </Typography> 
             <Typography variant="subtitle1" fontWeight="bold">
-              {userInfo.experience}
+              
               </Typography>
+              <Typography variant="h8" fontWeight="bold">
+              Cantidad de empleados: {userInfo.employeesQuantity}
+            </Typography>
+            
+            <Typography variant="subtitle1" fontWeight="bold">
+              
+              </Typography>
+              <Typography variant="h8" fontWeight="bold">
+              CUIT: {userInfo.cuit}
+            </Typography>
           </div>
 
           <div>
@@ -215,12 +207,20 @@ const ProfileData = () => {
               Redes
             </Typography>
             <Link
-              href="https://www.instagram.com/tu_usuario/"
+              href={`${userInfo.webPage}`}
               target="_blank"
               rel="noopener"
               color="secondary"
             >
-              Instagram
+              Web
+            </Link><br></br>
+            <Link
+              href={`${userInfo.linkedin}`}
+              target="_blank"
+              rel="noopener"
+              color="secondary"
+            >
+               Linkedin
             </Link>
           </div>
         </div>
@@ -316,4 +316,4 @@ const ProfileData = () => {
   );
 };
 
-export default ProfileData;
+export default ProfileEnterpriseData;

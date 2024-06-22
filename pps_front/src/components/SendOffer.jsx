@@ -34,7 +34,7 @@ const SendOffer = () => {
             console.error("tokenData o tokenData.userid es nulo.");
           }
         } catch (error) {
-            toast.error(`No pudimos enviar tu postulación. ${error.message}`);
+            toast.error(`No pudimos enviar tu postulación.`);
         }
       };
 

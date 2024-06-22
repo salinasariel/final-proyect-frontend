@@ -12,6 +12,7 @@ import NotFound from '../pages/NotFound'
 import SendOffer from '../components/SendOffer'
 import Vermifoto from '../pages/vermifoto'
 import DownloadCV from '../pages/DownloadCV'
+import NewOffer from '../pages/NewOffer'
 
 const SendOfferWrapper = () => {
     const location = useLocation();
@@ -35,6 +36,7 @@ const AppRouter = () => {
                 <Route path='/sendoffer' element={<SendOffer/>} />
                 <Route path='/vermifoto' element={<Vermifoto/>} />
                 <Route path='/downloadcv' element={<DownloadCV/>} />
+                <Route path='/newoffer' element={<NewOffer/>} />
             </Routes>
   )
 }
