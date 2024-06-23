@@ -21,7 +21,7 @@ const Panel = () => {
 
   const userIdentity = () => {
     if (userInfo === "Student") {
-      return <DisplayMyOffers />;
+      return <h1>Perfil de panel de usuario</h1>;
     } else if (userInfo === "Enterprise") {
       return <DisplayMyOffersEnterprise />;
     } else if (userInfo === "Admin") {

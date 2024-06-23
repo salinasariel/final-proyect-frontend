@@ -13,7 +13,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
   return (
     <>
       <div className=" bg-[#EEEEEE] sticky top-0  ">
-        <div className="flex items-center md:flex-row md:justify-between justify-center p-1">
+        <div className=" flex items-center md:flex-row md:justify-between justify-center p-1">
           <div className=" ">
             <Link to="/home">
               <div className="flex items-center hover:opacity-80 gap-1 mr-2">
