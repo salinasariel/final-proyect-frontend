@@ -9,7 +9,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TextField, Button, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
+
 const NewOffer = () => {
+    const { tokenData } = useTokenData();
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState("");
     const [about, setAbout] = useState("");
     const [location, setLocation] = useState("");
@@ -21,11 +25,16 @@ const NewOffer = () => {
     const [internTime, setInternTime] = useState("");
     const [isPaid, setIsPaid] = useState("");
 
+    const goToPanel = () => {
+        navigate('/panel');
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const userIdInt = parseInt(tokenData.userid, 10)
         const offerData = {
             offerId: 0,
-            userId: 24,
+            userId: userIdInt,
             tittle: title,
             about: about,
             publishedDate: "2024-06-22T15:46:29.994Z",
@@ -45,10 +54,11 @@ const NewOffer = () => {
 
         try {
             const response = await api.post("/OffersCotroller/NewOffer", offerData);
-            toast.success(`Oferta creada correctamente: ${response.data}`);
+            toast.success(`Oferta creada correctamente`);
+            setTimeout(goToPanel,1500);
         } catch (error) {
             console.error("error", error);
-            toast.error(`Tuvimos un error creando la oferta: ${error.message}`);
+            toast.error(`Tuvimos un error creando la oferta`);
         }
     };
 

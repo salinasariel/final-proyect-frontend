@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import DisplayMyOffers from "../components/DisplayMyOffersEnterprise";
+import DisplayMyOffersEnterprise from "../components/DisplayMyOffersEnterprise";
 import useTokenData from "../hooks/useTokenData";
 import { AuthContext } from "../AuthProvider";
 import React, { useContext, useState, useEffect } from 'react';
@@ -23,7 +23,7 @@ const Panel = () => {
     if (userInfo === "Student") {
       return <DisplayMyOffers />;
     } else if (userInfo === "Enterprise") {
-      return <DisplayMyOffers />;
+      return <DisplayMyOffersEnterprise />;
     } else if (userInfo === "Admin") {
       return <h1>Perfil de administrador</h1>;
     } else {

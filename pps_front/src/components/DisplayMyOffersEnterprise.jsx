@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import JobOffer from "./JobOffer";
+import JobEnterpriseOffer from "./JobEnterpriseOffer";
 import ExplainJobOffer from "./ExplainJobOffer";
 import api from "../api";
 import useTokenData from "../hooks/useTokenData";
 import { Button } from "@mui/base";
 import { Link } from "react-router-dom";
 
-const DisplayMyOffers = () => {
+const DisplayMyOffersEnterprise = () => {
   const { tokenData } = useTokenData();
 
   const [offers, setOffers] = useState([]);
@@ -65,7 +65,7 @@ const DisplayMyOffers = () => {
         <div className="m-5 md:flex flex-row gap-7 md:flex-wrap p-auto">
           {empty && <h1>No hay ofertas publicadas 😞</h1>}
           {results.map((offer, index) => (
-            <JobOffer
+            <JobEnterpriseOffer
               key={index}
               title={offer.tittle}
               description={offer.about}
@@ -80,42 +80,9 @@ const DisplayMyOffers = () => {
         </div>
       )}
 
-      {explain && (
-        <div className="flex h-screen">
-          <div className="w-1/3 p-5 overflow-auto">
-            {empty && <h1>No hay resultados. 😞</h1>}
-            {results.map((offer, index) => (
-              <JobOffer
-                key={index}
-                title={offer.tittle}
-                description={offer.about}
-                image={offer.image}
-                time={offer.location}
-                id={offer.offerId}
-                companyName={offer.companyName}
-                updateExplain={setExplain}
-                updateExplainData={updateExplainData}
-              />
-            ))}
-          </div>
-          <div className="w-2/3 p-5">
-            {explainData && (
-              <ExplainJobOffer
-                key={explainData.offerId}
-                title={explainData.tittle}
-                description={explainData.about}
-                image={explainData.image}
-                time={explainData.location}
-                id={explainData.offerId}
-                companyName={explainData.companyName}
-                updateExplain={updateExplain}
-              />
-            )}
-          </div>
-        </div>
-      )}
+
     </>
   );
 };
 
-export default DisplayMyOffers;
+export default DisplayMyOffersEnterprise;
