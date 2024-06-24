@@ -86,13 +86,16 @@ const CreateStudent = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button type="submit" variant="contained" color="primary">
-              Crear Estudiante
-            </Button>
+            <button
+              type="submit"
+              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold   // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 "
+            >
+              Enviar Solicitud
+            </button>
           </form>
         </div>
       </div>
-      <Footer youarenterprise={false} />
+      <Footer youarenterprise={true} moreinfo={true} />
     </>
   );
 };

@@ -2,8 +2,8 @@ import Header from "../components/Header";
 import DisplayMyOffersEnterprise from "../components/DisplayMyOffersEnterprise";
 import useTokenData from "../hooks/useTokenData";
 import { AuthContext } from "../AuthProvider";
-import React, { useContext, useState, useEffect } from 'react';
-
+import React, { useContext, useState, useEffect } from "react";
+import Footer from "../components/Footer";
 
 const Panel = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -12,12 +12,12 @@ const Panel = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const userRol = tokenData.rol; 
+      const userRol = tokenData.rol;
       setUserInfo(userRol);
     };
 
     fetchUserInfo();
-  }, [tokenData]); 
+  }, [tokenData]);
 
   const userIdentity = () => {
     if (userInfo === "Student") {
@@ -27,14 +27,15 @@ const Panel = () => {
     } else if (userInfo === "Admin") {
       return <h1>Perfil de administrador</h1>;
     } else {
-      return <h1>Error al detectar rol, avisar a programacion</h1>; 
+      return <h1>Error al detectar rol, avisar a programacion</h1>;
     }
   };
 
   return (
-    <div>
-      <Header/>
+    <div className=" min-h-screen">
+      <Header />
       {userIdentity()}
+      <Footer youarenterprise={true} moreinfo={true} />
     </div>
   );
 };

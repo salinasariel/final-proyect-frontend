@@ -1,6 +1,6 @@
 import "./App.css";
 import AppRouter from "/src/router/AppRouter.jsx";
-import CustomChatbot from "./components/CustomChatBot";
+import CustomChatbot from "./components/ChatBot/CustomChatBot";
 import { AuthContext, AuthProvider } from "./AuthProvider";
 
 import { ToastContainer, toast } from "react-toastify";

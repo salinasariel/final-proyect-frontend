@@ -1,30 +1,28 @@
-import  { useState } from 'react';
+import { useState } from "react";
 import { TextField, Button, Typography } from "@mui/material";
-import Header from '../components/Header';
+import Header from "../components/Header";
 import Footer from "../components/Footer";
-import api from '../api';
+import api from "../api";
 
 import { toast } from "react-toastify";
 
 const CreateEnterprise = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [city, setCity] = useState('');
-  const [password, setPassword] = useState('');
-  const [cuitnumber, setcuitNumber] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [password, setPassword] = useState("");
+  const [cuitnumber, setcuitNumber] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const enterpriseData = {
-
       email: email,
       password: password,
       cuit: cuitnumber,
       name: name,
       city: city,
       rol: 0,
-      userState: true
-
+      userState: true,
     };
 
     try {
@@ -40,7 +38,7 @@ const CreateEnterprise = () => {
     <>
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className='max-w-[50%]'>
+        <div className="max-w-[50%]">
           <form onSubmit={handleSubmit}>
             <Typography variant="h6" style={{ paddingTop: "5px" }}>
               <b>Solicitud de alta empresas</b>
@@ -79,7 +77,7 @@ const CreateEnterprise = () => {
               onChange={(e) => setCity(e.target.value)}
             />
             <TextField
-              id='email'
+              id="email"
               variant="outlined"
               label="Email de contacto"
               fullWidth
@@ -102,13 +100,12 @@ const CreateEnterprise = () => {
             />
 
             <Button type="submit" variant="contained" color="primary">
-              Crear Estudiante
+              Enviar Solicitud
             </Button>
           </form>
         </div>
       </div>
-      <Footer youarenterprise={false} />
-
+      <Footer youarenterprise={false} moreinfo={true} />
     </>
   );
 };
