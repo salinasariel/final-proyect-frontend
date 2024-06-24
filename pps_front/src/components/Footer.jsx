@@ -1,21 +1,25 @@
 import LogoUtn from "../assets/images/logoutn.png";
-import '../assets/animations.css';
+import "../assets/animations.css";
 
 const Footer = ({ youarenterprise, moreinfo }) => {
   return (
-    <div className="inset-x-0 bottom-0 row-span-1 w-full bg-[#EEEEEE] h-auto mb-0">
+    <div className="inset-x-0 bottom-0 row-span-1 w-full bg-[#EEEEEE] h-auto mb-0 dark:bg-zinc-800 dark:text-white">
       {youarenterprise && (
         <div className="bg-[#f5f5f5] sticky top-0 flex justify-center">
-          <b><p className="text-center mt-4">
-            ¿Es una empresa interesada en publicar en el portal?{" "}
-            <a href="/createnterprise" className="text-blue-500 hover:underline">
-              Solicite su alta.
-            </a>
-          </p></b>
+          <b>
+            <p className="text-center mt-4 ">
+              ¿Es una empresa interesada en publicar en el portal?{" "}
+              <a
+                href="/createnterprise"
+                className="text-blue-500 hover:underline"
+              >
+                Solicite su alta.
+              </a>
+            </p>
+          </b>
         </div>
       )}
 
-      
       <a href="https://www.utn.edu.ar/es/" target="_blank">
         <img
           src={LogoUtn}
@@ -24,7 +28,6 @@ const Footer = ({ youarenterprise, moreinfo }) => {
         />
       </a>
       {moreinfo && (
-
         <div className="  p-3 flex gap-32">
           <ul>
             <li>
@@ -33,7 +36,10 @@ const Footer = ({ youarenterprise, moreinfo }) => {
               </h1>
             </li>
             <div className=" flex gap-1 items-center">
-              <a href="https://maps.app.goo.gl/hFzzpCMQcuDEzCop9" target="blank">
+              <a
+                href="https://maps.app.goo.gl/hFzzpCMQcuDEzCop9"
+                target="blank"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -108,22 +114,22 @@ const Footer = ({ youarenterprise, moreinfo }) => {
                 </a>
               </li>
               <li>
-                <a href="https://elibro.net/es/lc/utnfrro/inicio" target="blank">
+                <a
+                  href="https://elibro.net/es/lc/utnfrro/inicio"
+                  target="blank"
+                >
                   eLibro
                 </a>
               </li>
             </ul>
           </div>
         </div>
-
       )}
       <div className="font-semibold text-center text-xs">
         <p>Copyright © 2024 Universidad Tecnológica Nacional</p>
       </div>
     </div>
-
   );
-
 };
 
 export default Footer;

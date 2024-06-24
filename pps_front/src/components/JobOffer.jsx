@@ -29,33 +29,39 @@ const JobOffer = ({
 
   return (
     <div className="scale-up-center hoveranimation p-auto">
-      <div className="rounded-xl border p-5 shadow-md bg-white w-90 md:max-w-sm  min-w-[390px] min-h-[280px]  mb-4 ">
-        <div className="flex w-full items-center justify-between border-b pb-3">
+      <div className="rounded-xl border p-5 shadow-md bg-white dark:bg-zinc-900 w-90 md:max-w-sm min-w-[390px] min-h-[280px] mb-4">
+        <div className="flex w-full items-center justify-between border-b pb-3 dark:border-neutral-700">
           <div className="flex items-center gap-2">
             <img
-              className="h-8 w-8 rounded-full bg-slate-400"
+              className="h-8 w-8 rounded-full bg-slate-400 dark:bg-neutral-700"
               src={image}
               alt=""
             ></img>
-            <div className="text-lg font-bold text-black"></div>
+            <div className="text-lg font-bold text-black dark:text-white">
+              {companyName}
+            </div>
           </div>
           <div className="flex items-center space-x-8">
             <button
               onClick={showDataById}
-              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white"
+              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 "
             >
               Postularse
             </button>
-            <div className="text-xs text-neutral-500">#{id}</div>
+            <div className="text-xs text-neutral-500 dark:text-neutral-400">
+              #{id}
+            </div>
           </div>
         </div>
 
         <div className="mt-4 mb-6">
           <div className="mb-3 flex justify-between items-center">
-            <h1 className="text-xl font-bold">{title} </h1>
-            <h1>{time}</h1>
+            <h1 className="text-xl font-bold dark:text-white">{title}</h1>
+            <h1 className="dark:text-neutral-400 text-sm">{time}</h1>
           </div>
-          <div className="text-sm text-neutral-600">{description}</div>
+          <div className="text-sm text-red dark:text-neutral-400">
+            {description}
+          </div>
         </div>
       </div>
     </div>
