@@ -14,7 +14,7 @@ const DisplayJobOffer = ({ busqueda }) => {
   };
   const showData = async () => {
     try {
-      const response = await api.get("/OffersCotroller/GetAllOffers");
+      const response = await api.get("/OffersCotroller/GetAllOffersWithEnterprise");
       console.log(response.data);
       setOffers(response.data);
     } catch (error) {
@@ -52,10 +52,10 @@ const DisplayJobOffer = ({ busqueda }) => {
               key={index}
               title={offer.tittle}
               description={offer.about}
-              image={offer.image}
+              image={offer.enterprise.profilePhoto}
               time={offer.location}
               id={offer.offerId}
-              companyName={offer.companyName}
+              companyName={offer.enterprise.name}
               updateExplain={setExplain}
               updateExplainData={updateExplainData}
             />
