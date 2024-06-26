@@ -2,27 +2,31 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../AuthProvider";
 import DarkModeButton from "./DarkModeButton";
+import BurgerMenu from "./BurgerMenu";
 
 const Header = ({ logged, searchon, onSearchChange }) => {
   const [search, setSearch] = useState("");
   const { isLoggedIn, logout } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearch(value);
     onSearchChange(value);
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <div className=" bg-[#EEEEEE] sticky top-0 shadow-md dark:bg-stone-900 dark:text-white ">
-        <div className=" flex items-center justify-between md:flex-row md:justify-between justify-center p-1">
+      <div className="bg-[#EEEEEE] sticky top-0 shadow-md dark:bg-stone-900 dark:text-white">
+        <div className="flex items-center justify-between md:flex-row md:justify-between justify-center p-1">
           <div className="flex">
             <Link to="/home" className="dark:text-white">
               <div className="flex items-center hover:opacity-80 gap-1 mr-2">
-                <span className=" font-bold text-3xl text-neutral-700 dark:text-white">
-                  {" "}
-                  UTN{" "}
-                </span>
+                <span className="font-bold text-3xl text-neutral-700 dark:text-white">UTN</span>
               </div>
             </Link>
           </div>
@@ -32,16 +36,15 @@ const Header = ({ logged, searchon, onSearchChange }) => {
               type="text"
               onChange={handleSearchChange}
               placeholder="Buscar"
-              className=" scale-up-vertical-center rounded-xl pl-4 md:w-[400px]"
+              className="scale-up-vertical-center rounded-xl pl-4 md:w-[400px]"
             ></input>
           )}
-
           <div>
-            <ul className="md:flex pd-  gap-2  items-center md:pl-0 md:gap-5 hidden ">
+            <ul className="md:flex pd- gap-2 items-center md:pl-0 md:gap-5 hidden">
               <li></li>
               {isLoggedIn && (
-                <ul className="md:flex pd-  gap-2  items-center md:pl-0 md:gap-5 hidden ">
-                  <li className="w-7 h-7 text-neutral-700   rounded-full flex items-center justify-center dark:bg-neutral-800  dark:text-gray-50 dark:border-0">
+                <>
+                  <li className="w-7 h-7 text-neutral-700 rounded-full flex items-center justify-center dark:bg-neutral-800 dark:text-gray-50 dark:border-0">
                     <Link to="/home">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +57,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                       </svg>
                     </Link>
                   </li>
-                  <li className="w-7 h-7 text-neutral-700   rounded-full flex items-center justify-center dark:bg-neutral-800  dark:text-gray-50 dark:border-0">
+                  <li className="w-7 h-7 text-neutral-700 rounded-full flex items-center justify-center dark:bg-neutral-800 dark:text-gray-50 dark:border-0">
                     <Link to="/panel">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +69,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                       </svg>
                     </Link>
                   </li>
-                  <li className="w-7 h-7 text-neutral-700   rounded-full flex items-center justify-center dark:bg-neutral-800  dark:text-gray-50 dark:border-0">
+                  <li className="w-7 h-7 text-neutral-700 rounded-full flex items-center justify-center dark:bg-neutral-800 dark:text-gray-50 dark:border-0">
                     <Link to="/profile">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -85,17 +88,16 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                   <li>
                     <DarkModeButton />
                   </li>
-                </ul>
+                </>
               )}
-
               <li>
                 {!isLoggedIn && (
                   <Link to="/login">
                     <button
                       type="button"
-                      className=" h-8 p-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full  text-xs   me-2    dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 flex items-center gap-1"
+                      className="h-8 p-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-xs me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 flex items-center gap-1"
                     >
-                      <b>Ingresar </b>
+                      <b>Ingresar</b>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -116,17 +118,17 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                     <button
                       onClick={logout}
                       type="button"
-                      className="w-7 h-7 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-small rounded-full text-sm px-1 py-1 text-center me-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                      className="w-7 h-7 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-small rounded-full text-sm px-1 py-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 dark:border-red-700 flex items-center justify-center"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="size-5"
+                        className="size-5 hover:size-6"
                       >
                         <path
                           fillRule="evenodd"
-                          d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6Zm-5.03 4.72a.75.75 0 0 0 0 1.06l1.72 1.72H2.25a.75.75 0 0 0 0 1.5h10.94l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 0 0-1.06 0Z"
+                          d="M7.5 3.75A2.25 2.25 0 0 0 5.25 6v12a2.25 2.25 0 0 0 2.25 2.25h6a.75.75 0 0 1 0 1.5h-6A3.75 3.75 0 0 1 3.75 18V6A3.75 3.75 0 0 1 7.5 2.25h6a.75.75 0 0 1 0 1.5h-6ZM15.47 8.72a.75.75 0 0 0 0 1.06l1.97 1.97H10.5a.75.75 0 0 0 0 1.5h6.94l-1.97 1.97a.75.75 0 0 0 1.06 1.06l3.25-3.25a.75.75 0 0 0 0-1.06l-3.25-3.25a.75.75 0 0 0-1.06 0Z"
                           clipRule="evenodd"
                         />
                       </svg>
@@ -135,20 +137,10 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                 )}
               </li>
             </ul>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 md:hidden mx-3"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+            {/* aca empieza el menu hamburguesa */}
+              <BurgerMenu
+              isMenuOpen={isMenuOpen}
+              toggleMenu={toggleMenu}/>
           </div>
         </div>
       </div>

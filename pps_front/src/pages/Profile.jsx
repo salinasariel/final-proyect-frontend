@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import  { useContext, useState, useEffect } from "react";
 import ProfileData from "../components/ProfileData";
 import api from "../api";
 import useTokenData from "../hooks/useTokenData";

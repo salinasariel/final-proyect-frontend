@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import DisplayMyOffersEnterprise from "../components/DisplayMyOffersEnterprise";
 import useTokenData from "../hooks/useTokenData";
 import { AuthContext } from "../AuthProvider";
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import Footer from "../components/Footer";
 
 const Panel = () => {
