@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, Typography, Box, Paper, Container } from "@mui/material";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import api from "../api";
@@ -14,6 +14,20 @@ const CreateStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!fileNumber.match(/^\d{5}$/)) {
+      toast.error("El número de legajo debe tener exactamente 5 caracteres numéricos.");
+      return;
+    }
+
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/;
+    if (!password.match(passwordPattern)) {
+      toast.error(
+        "La contraseña debe tener al menos 7 caracteres, 1 letra mayúscula, 1 letra minúscula y 1 número."
+      );
+      return;
+    }
+
     const studentData = {
       email: email,
       password: password,
@@ -36,65 +50,78 @@ const CreateStudent = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className="max-w-[50%]">
+      <Container component="main" maxWidth="sm">
+        <Paper elevation={3} style={{ padding: '2rem', marginTop: '2rem' }}>
+          <Typography variant="h5" component="h1" align="center" gutterBottom>
+            Solicitud de Alta Estudiantes
+          </Typography>
           <form onSubmit={handleSubmit}>
-            <Typography variant="h6" style={{ paddingTop: "5px" }}>
-              <b>Solicitud de alta estudiantes</b>
-            </Typography>
             <TextField
               id="fileNumber"
-              margin="normal"
               label="Legajo"
+              
+              margin="normal"
               required
               fullWidth
               variant="outlined"
               color="secondary"
               value={fileNumber}
               onChange={(e) => setFileNumber(e.target.value)}
+              
             />
             <TextField
               id="name"
-              margin="normal"
               label="Nombre"
+              
+              margin="normal"
               required
               fullWidth
               variant="outlined"
               color="secondary"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              inputProps={{ minLength: 3, maxLength: 30 }}
             />
             <TextField
               id="password"
-              margin="normal"
               label="Contraseña"
               type="password"
+              
+              margin="normal"
               required
               fullWidth
               variant="outlined"
               color="secondary"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              inputProps={{ minLength: 7 }}
             />
             <TextField
               id="email"
-              variant="outlined"
               label="Email"
-              fullWidth
-              required
+              type="email"
+              
               margin="normal"
+              required
+              fullWidth
+              variant="outlined"
+              color="secondary"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button
-              type="submit"
-              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold   // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 "
-            >
-              Enviar Solicitud
-            </button>
+            <Box textAlign="center" mt={2}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                size="large"
+              >
+                Enviar Solicitud
+              </Button>
+            </Box>
           </form>
-        </div>
-      </div>
+        </Paper>
+      </Container>
       <Footer youarenterprise={true} moreinfo={true} />
     </>
   );

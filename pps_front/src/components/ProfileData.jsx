@@ -5,11 +5,7 @@ import useTokenData from "../hooks/useTokenData";
 import ChangeUserPicture from "./ChangeUserPicture";
 import { AuthContext } from "../AuthProvider";
 import {
-  Avatar,
   Typography,
-  Fab,
-  Divider,
-  Link,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -22,11 +18,19 @@ import {
   Radio,
   FormControl,
   FormLabel,
+  MenuItem,
 } from "@mui/material";
 
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
+
+const LISTA = [
+  { value: "dni", label: "DNI" },
+  { value: "pasaporte", label: "Pasaporte" },
+  { value: "cedula", label: "Cédula de identidad" },
+  {value: "Libreta Civica", label: "LC"},
+];
 
 const ProfileData = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -312,12 +316,12 @@ const ProfileData = () => {
                   required
                   select
                 >
-                  {/*aca se agrega las opciones para el tipo de documento
+                  {/*aca se agrega las opciones para el tipo de documento*/}
                   {LISTA.map((option) => (
-                    <option key={option.value} value={option.value}>
+                    <MenuItem key={option.value} value={option.value}>
                       {option.label}
-                    </option>
-                  ))}*/}
+                    </MenuItem>
+                  ))}
                 </TextField>
               </Grid>
               <Grid item xs={8}>
@@ -352,24 +356,24 @@ const ProfileData = () => {
                 name="row-radio-buttons-group"
               >
                 <FormControlLabel
-                  value=""
+                  value="Soltero"
                   control={<Radio color="secondary" />}
                   label="Soltero"
                 />
                 <FormControlLabel
-                  value=""
+                  value="Casado"
                   control={<Radio color="secondary" />}
                   label="Casado"
                 />
                 <FormControlLabel
-                  value=""
+                  value="Divorciado"
                   control={<Radio color="secondary" />}
                   label="Divorciado"
                 />
                 <FormControlLabel
-                  value=""
+                  value="Viudo"
                   control={<Radio color="secondary" />}
-                  label="viudo"
+                  label="Viudo"
                 />
               </RadioGroup>
             </FormControl>
