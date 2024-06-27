@@ -5,6 +5,7 @@ const ApplicationItemList = ({
   status,
   companyContact,
   title,
+  offerId,
 }) => {
   return (
     <div className="w-full overflow-x-auto my-0 ">
@@ -18,7 +19,7 @@ const ApplicationItemList = ({
           </td>
           <td className="pl-2 text-center">
             {" "}
-            <CancelApplicationButton />{" "}
+            <CancelApplicationButton offerId={offerId} />
           </td>
         </tr>
       </table>

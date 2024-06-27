@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import api from "../api";
-import useTokenData from "../hooks/useTokenData";
-import JobOffer from "./JobOffer";
+import { useEffect, useState } from "react";
+import api from "../../api";
+import useTokenData from "../../hooks/useTokenData";
 import ApplicationItemList from "./ApplicationItemList";
 import ApplicationItemHeader from "./ApplicationItemHeader";
 
@@ -52,6 +51,7 @@ const DisplayMyOffersStudent = () => {
               id={offer.offers.offerId}
               companyName={offer.enterprise.name}
               companyContact={offer.enterprise.email}
+              offerId={offer.offers.offerId}
             />
           ))}
         </div>

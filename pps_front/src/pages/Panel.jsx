@@ -5,7 +5,7 @@ import { AuthContext } from "../AuthProvider";
 import { useContext, useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import AdminPanel from "../components/AdminPanel";
-import DisplayMyOffersStudent from "../components/DisplayMyOffersStudent";
+import DisplayMyOffersStudent from "../components/StudentPanel/DisplayMyOffersStudent";
 
 const Panel = () => {
   const { isLoggedIn } = useContext(AuthContext);
