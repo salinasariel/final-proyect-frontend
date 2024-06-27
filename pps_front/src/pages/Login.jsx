@@ -12,43 +12,22 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    /*habria que crear un validor que cuando un email o contraseña no coincida con ninguno en la base de datos te devuelva un mensaje aclaraando la situacion 
-    o hacer un validor que si el email ingresado no coincide con la contraseña registrada te tire un mensaje aclarando la situacion.*/
-
-    if (!emailRegex.test(email)) {
-      toast.error("Por favor ingresa un correo electrónico válido.");
-      return;
-    }
-
-    if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/)) {
-      toast.error(
-        "La contraseña debe tener al menos 7 caracteres, 1 letra mayúscula, 1 letra minúscula y 1 número."
-      );
-      return;
-    }
-
-    if (!email || !password) {
-      toast.error("Por favor completa todos los campos.");
-      return;
-    }
     const result = await login(email, password);
     if (result.success) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       navigate("/home");
     }
   };
+
   return (
-    <div
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
-    >
+    <div>
       <LoginHeader />
       <ToastContainer />
       <div style={{ flex: 1 }}>
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center min-h-screen max-h-screen bg-gray-100">
           <div className="bg-white shadow-md rounded-lg p-8 max-w-md scale-up-center">
             <h1 className="text-3xl font-bold text-center mb-4">
               Inicio de Sesión
@@ -101,7 +80,7 @@ const Login = () => {
           <Footer youarenterprise={true} moreinfo={true} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -35,12 +35,12 @@ const ExplainJobOffer = ({
   };
 
   return (
-    <div className="flex h-screen">
+    <div style={{ overflow: "hidden" }}>
       <div className=""></div>
-      <div className="scale-up-horizontal-right hoveranimation flex justify-center items-center w-full h-screen">
-        <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-full h-screen">
-          <div className="flex w-full items-center justify-between border-b pb-3">
-            <div className="flex items-center gap-2">
+      <div className="scale-up-horizontal-right hoveranimation flex justify-center items-center w-full h-screen overflow-hidden">
+        <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-full h-screen overflow-hidden">
+          <div className="flex w-full items-center justify-between border-b pb-3 overflow-hidden">
+            <div className="flex items-center gap-2 overflow-hidden">
               <img
                 className="h-8 w-8 rounded-full bg-slate-400"
                 src={image}
