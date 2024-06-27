@@ -5,6 +5,7 @@ import { AuthContext } from "../AuthProvider";
 import { useContext, useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import AdminPanel from "../components/AdminPanel";
+import DisplayMyOffersStudent from "../components/DisplayMyOffersStudent";
 
 const Panel = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -22,11 +23,11 @@ const Panel = () => {
 
   const userIdentity = () => {
     if (userInfo === "Student") {
-      return <h1>Perfil de panel de usuario</h1>;
+      return <DisplayMyOffersStudent />;
     } else if (userInfo === "Enterprise") {
       return <DisplayMyOffersEnterprise />;
     } else if (userInfo === "Admin") {
-      return <AdminPanel/>;
+      return <AdminPanel />;
     } else {
       return <h1>Error al detectar rol, avisar a programacion</h1>;
     }

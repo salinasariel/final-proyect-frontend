@@ -1,32 +1,27 @@
-import { useState, useEffect } from "react";
-import JobOffer from "./JobOffer";
-import ExplainJobOffer from "./ExplainJobOffer";
+import React, { useEffect, useState } from "react";
 import api from "../api";
 import useTokenData from "../hooks/useTokenData";
+import JobOffer from "./JobOffer";
+import ApplicationItemList from "./ApplicationItemList";
+import ApplicationItemHeader from "./ApplicationItemHeader";
 
-const DisplayMyOffers = () => {
+const DisplayMyOffersStudent = () => {
   const { tokenData } = useTokenData();
-
   const [offers, setOffers] = useState([]);
-  const [explain, setExplain] = useState(false);
-  const [explainData, setExplainData] = useState(null);
+  const [enterprise, setEnterprise] = useState([]);
 
-  const updateExplain = (value) => {
-    setExplain(value);
-  };
-
-  const showData = async () => {
+  const GetApplications = async () => {
     try {
-      console.log(tokenData)
       if (tokenData && tokenData.userid) {
         const userIdInt = parseInt(tokenData.userid, 10);
         const response = await api.get(
-          `/OffersCotroller/GetOffersByEnterprise?enterpriseId=${userIdInt}`
+          `/OffersCotroller/GetOfferByStudent?studentId=${userIdInt}`
         );
-        setOffers(response.data);
+        const item = await response.data;
+        setOffers(item);
+        console.log(enterprise);
       } else {
-        console.error("tokenData o tokenData.userid es nulo.");
-        
+        console.error("Token inválido o no se pudo obtener el ID del usuario.");
       }
     } catch (error) {
       console.error("Error al obtener las ofertas:", error);
@@ -34,73 +29,35 @@ const DisplayMyOffers = () => {
   };
 
   useEffect(() => {
-    showData();
+    GetApplications();
   }, [tokenData]);
 
-  let results = offers;
-  let empty = false;
-
-  const updateExplainData = (data) => {
-    setExplainData(data);
-  };
-
+  console.log(offers);
   return (
-    <>
-      {!explain && (
-        <div className="m-5 md:flex flex-row gap-7 md:flex-wrap p-auto">
-          {empty && <h1>No hay ofertas publicadas 😞</h1>}
-          {results.map((offer, index) => (
-            <JobOffer
+    <div className=" my-2">
+      {offers.length === 0 ? (
+        <div>
+          <ApplicationItemHeader />
+        </div>
+      ) : (
+        <div>
+          <ApplicationItemHeader />
+          {offers.map((offer, index) => (
+            <ApplicationItemList
               key={index}
-              title={offer.tittle}
-              description={offer.about}
-              image={offer.image}
-              time={offer.location}
-              id={offer.offerId}
-              companyName={offer.companyName}
-              updateExplain={setExplain}
-              updateExplainData={updateExplainData}
+              title={offer.offers.tittle}
+              description={offer.offers.about}
+              image={offer.enterprise.profilePhoto}
+              time={offer.offers.location}
+              id={offer.offers.offerId}
+              companyName={offer.enterprise.name}
+              companyContact={offer.enterprise.email}
             />
           ))}
         </div>
       )}
-
-      {explain && (
-        <div className="flex h-screen">
-          <div className="w-1/3 p-5 overflow-auto">
-            {empty && <h1>No hay resultados. 😞</h1>}
-            {results.map((offer, index) => (
-              <JobOffer
-                key={index}
-                title={offer.tittle}
-                description={offer.about}
-                image={offer.image}
-                time={offer.location}
-                id={offer.offerId}
-                companyName={offer.companyName}
-                updateExplain={setExplain}
-                updateExplainData={updateExplainData}
-              />
-            ))}
-          </div>
-          <div className="w-2/3 p-5">
-            {explainData && (
-              <ExplainJobOffer
-                key={explainData.offerId}
-                title={explainData.tittle}
-                description={explainData.about}
-                image={explainData.image}
-                time={explainData.location}
-                id={explainData.offerId}
-                companyName={explainData.companyName}
-                updateExplain={updateExplain}
-              />
-            )}
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 
-export default DisplayMyOffers;
+export default DisplayMyOffersStudent;

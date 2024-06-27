@@ -26,7 +26,9 @@ const Header = ({ logged, searchon, onSearchChange }) => {
           <div className="flex">
             <Link to="/home" className="dark:text-white">
               <div className="flex items-center hover:opacity-80 gap-1 mr-2">
-                <span className="font-bold text-3xl text-neutral-700 dark:text-white">UTN</span>
+                <span className="font-bold text-3xl text-neutral-700 dark:text-white">
+                  UTN
+                </span>
               </div>
             </Link>
           </div>
@@ -36,7 +38,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
               type="text"
               onChange={handleSearchChange}
               placeholder="Buscar"
-              className="scale-up-vertical-center rounded-xl pl-4 md:w-[400px]"
+              className="scale-up-vertical-center rounded-xl pl-4 md:w-[400px] dark:bg-stone-700 dark:text-white"
             ></input>
           )}
           <div>
@@ -95,7 +97,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                   <Link to="/login">
                     <button
                       type="button"
-                      className="h-8 p-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-xs me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 flex items-center gap-1"
+                      className="h-8 p-2  dark:text-white font-medium rounded-full text-xs me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 flex items-center gap-1"
                     >
                       <b>Ingresar</b>
                       <svg
@@ -118,7 +120,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                     <button
                       onClick={logout}
                       type="button"
-                      className="w-7 h-7 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-small rounded-full text-sm px-1 py-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 dark:border-red-700 flex items-center justify-center"
+                      className="w-7 h-7 dark:text-white  focus:outline-none focus:ring-4  font-small rounded-full text-sm px-1 py-1 flex items-center justify-center"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -137,10 +139,8 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                 )}
               </li>
             </ul>
-            {/* aca empieza el menu hamburguesa */}
-              <BurgerMenu
-              isMenuOpen={isMenuOpen}
-              toggleMenu={toggleMenu}/>
+
+            <BurgerMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
           </div>
         </div>
       </div>
