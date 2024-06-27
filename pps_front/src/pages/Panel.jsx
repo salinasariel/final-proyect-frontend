@@ -4,6 +4,7 @@ import useTokenData from "../hooks/useTokenData";
 import { AuthContext } from "../AuthProvider";
 import { useContext, useState, useEffect } from "react";
 import Footer from "../components/Footer";
+import AdminPanel from "../components/AdminPanel";
 
 const Panel = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const Panel = () => {
     } else if (userInfo === "Enterprise") {
       return <DisplayMyOffersEnterprise />;
     } else if (userInfo === "Admin") {
-      return <h1>Perfil de administrador</h1>;
+      return <AdminPanel/>;
     } else {
       return <h1>Error al detectar rol, avisar a programacion</h1>;
     }
