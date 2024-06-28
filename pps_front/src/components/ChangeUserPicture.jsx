@@ -2,13 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import { toast } from "react-toastify";
 import useTokenData from "../hooks/useTokenData";
 
 const ChangeUserPicture = () => {
   const [fileBase64, setFileBase64] = useState("");
   const navigate = useNavigate();
   const { tokenData } = useTokenData();
-  
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -26,14 +27,21 @@ const ChangeUserPicture = () => {
 
   const UpdateProfilePhoto = async () => {
     try {
-      const userIdInt = parseInt(tokenData.userid, 10);
-      const response = await api.put(`User/${userIdInt}/profilePhoto`, {
-        profilePhoto: fileBase64,
-      });
-      console.log("Respuesta de la API:", response.data);
-      setTimeout(goToHome, 2000);
+      if (!fileBase64) {
+        toast.error("Debe ingresar una foto")
+      } else {
+
+        const userIdInt = parseInt(tokenData.userid, 10);
+        const response = await api.put(`User/${userIdInt}/profilePhoto`, {
+          profilePhoto: fileBase64,
+        });
+        console.log("Respuesta de la API:", response.data);
+        setTimeout(goToHome, 2000);
+
+      }
+      
     } catch (error) {
-      console.error("Error al actualizar la foto de perfil:", error);
+      console.error("Error al actualizar la foto de perfil");
     }
   };
 

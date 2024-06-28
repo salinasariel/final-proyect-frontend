@@ -1,10 +1,25 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useState, useContext, useEffect  } from "react";
 import { AuthContext } from "../AuthProvider";
 import DarkModeButton from "./DarkModeButton";
+import useTokenData from "../hooks/useTokenData";
 
 const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
   const { isLoggedIn, logout } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState("");
+  const { tokenData } = useTokenData();
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (tokenData && tokenData.rol) {
+        const userRol = tokenData.rol;
+        setUserInfo(userRol);
+      } else {
+        setUserInfo(null);
+      }
+    };
+    fetchUserInfo();
+  }, [tokenData]);
 
   return (
     <div className="relative md:hidden">
@@ -78,7 +93,7 @@ const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
                   <span>Panel</span>
                 </Link>
               </li>
-              <li className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+              {userInfo !== "Admin" && (<li className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                 <Link to="/profile" className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +109,8 @@ const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
                   </svg>
                   <span>Mi Perfil</span>
                 </Link>
-              </li>
+              </li>)}
+              
               <li className="flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                 <DarkModeButton />
                 <span>Dark Mode</span>

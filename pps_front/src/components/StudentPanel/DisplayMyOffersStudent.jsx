@@ -85,6 +85,10 @@ const DisplayMyOffersStudent = () => {
                         <TableCell className="dark:text-white">
                           {offer.enterprise.email}
                         </TableCell>
+                        <TableCell className="dark:text-white">
+                          {offer.offers.offerState && (<p>En progreso</p>)}
+                          {!offer.offers.offerState && (<p>Finalizada</p>)}
+                        </TableCell>
                         <TableCell>
                           <CancelApplicationButton
                             offerId={offer.offers.offerId}

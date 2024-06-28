@@ -42,7 +42,7 @@ const DownloadCV = () => {
     };
 
     const goToHome = () => {
-        navigate('/profile');
+        navigate('/panel');
     }
 
     if (!userInfo) {
@@ -72,7 +72,6 @@ const DownloadCV = () => {
                     </Grid>
                     <Grid item xs={12} style={{ marginTop: 20 }}>
                         <Typography variant="h6">Datos personales:</Typography>
-                        <Typography>Fecha de nacimiento: {userInfo.birthdate}</Typography>
                         <Typography>Cuil: {userInfo.cuil}</Typography>
                         <Typography>Dirección: {userInfo.address}</Typography>
                         <Typography>Ciudad: {userInfo.city}</Typography>

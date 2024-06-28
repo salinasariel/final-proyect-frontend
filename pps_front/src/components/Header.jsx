@@ -4,6 +4,7 @@ import { AuthContext } from "../AuthProvider";
 import DarkModeButton from "./DarkModeButton";
 import BurgerMenu from "./BurgerMenu";
 import useTokenData from "../hooks/useTokenData";
+
 const Header = ({ logged, searchon, onSearchChange }) => {
   const [search, setSearch] = useState("");
   const { isLoggedIn, logout } = useContext(AuthContext);
