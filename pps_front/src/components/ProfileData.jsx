@@ -6,6 +6,7 @@ import ChangeUserPicture from "./ChangeUserPicture";
 import { AuthContext } from "../AuthProvider";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import EditProfileStudent from "./EditProfileStudent";
 
 const ProfileData = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -176,7 +177,7 @@ const ProfileData = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                Info
+                Acerca de mi...
               </h2>
               <p className="text-gray-700 dark:text-neutral-400">
                 {userInfo.about}
@@ -380,6 +381,7 @@ const ProfileData = () => {
           </div>
         </div>
       </div>
+      <EditProfileStudent open={open} handleClose={handleClose} />
     </div>
   );
 };
