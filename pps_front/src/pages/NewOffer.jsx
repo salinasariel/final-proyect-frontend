@@ -198,6 +198,9 @@ const NewOffer = () => {
           </form>
         </div>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
       <Footer youarenterprise={true} moreinfo={true} />
     </>
   );

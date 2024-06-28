@@ -1,19 +1,29 @@
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider";
 import DarkModeButton from "./DarkModeButton";
 import BurgerMenu from "./BurgerMenu";
-
+import useTokenData from "../hooks/useTokenData";
 const Header = ({ logged, searchon, onSearchChange }) => {
   const [search, setSearch] = useState("");
   const { isLoggedIn, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { tokenData } = useTokenData();
+  const [userInfo, setUserInfo] = useState("");
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearch(value);
     onSearchChange(value);
   };
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      const userRol = tokenData.rol;
+      setUserInfo(userRol);
+    };
+    fetchUserInfo();
+  }, [tokenData]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,6 +81,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                       </svg>
                     </Link>
                   </li>
+                  {userInfo !== "Admin" && (
                   <li className="w-7 h-7 text-neutral-700 rounded-full flex items-center justify-center dark:bg-neutral-800 dark:text-gray-50 dark:border-0">
                     <Link to="/profile">
                       <svg
@@ -87,6 +98,8 @@ const Header = ({ logged, searchon, onSearchChange }) => {
                       </svg>
                     </Link>
                   </li>
+                 )}
+                  
                   <li>
                     <DarkModeButton />
                   </li>

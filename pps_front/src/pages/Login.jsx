@@ -25,7 +25,6 @@ const Login = () => {
   return (
     <div>
       <LoginHeader />
-      <ToastContainer />
       <div style={{ flex: 1 }}>
         <div className="flex flex-col items-center justify-center min-h-screen max-h-screen bg-gray-100">
           <div className="bg-white shadow-md rounded-lg p-8 max-w-md scale-up-center">

@@ -41,11 +41,7 @@ const ExplainJobOffer = ({
         <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-full h-screen overflow-hidden">
           <div className="flex w-full items-center justify-between border-b pb-3 overflow-hidden">
             <div className="flex items-center gap-2 overflow-hidden">
-              <img
-                className="h-8 w-8 rounded-full bg-slate-400"
-                src={image}
-                alt=""
-              />
+              
               <div className="text-lg font-bold text-black dark:text-white">
                 {empresName}
               </div>
@@ -55,7 +51,7 @@ const ExplainJobOffer = ({
                 onClick={continueOffer}
                 className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5]  // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 "
               >
-                Confirmar postulación
+                Continuar
               </button>
               <div className="text-xs text-neutral-500 dark:text-neutral-400">
                 #{id}

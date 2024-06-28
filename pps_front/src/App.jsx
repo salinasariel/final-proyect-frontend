@@ -10,9 +10,10 @@ function App() {
   return (
     <AuthProvider>
       <>
+      <ToastContainer />
         <AppRouter />
         <CustomChatbot />
-        <ToastContainer />
+
       </>
     </AuthProvider>
   );

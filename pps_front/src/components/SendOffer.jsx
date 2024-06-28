@@ -46,8 +46,7 @@ const SendOffer = () => {
                 <div className="w-full max-w-4xl bg-white rounded-xl border p-5 shadow-md">
                     <div className="flex w-full items-center justify-between border-b pb-3">
                         <div className="flex items-center gap-2">
-                            <img className="h-8 w-8 rounded-full bg-slate-400" src={image} alt="" />
-                            <b>¿Está seguro de aplicar en {empresName} para el puesto de {title}?</b>
+                            <b>¿Está seguro de aplicar  para el puesto de {title}?</b>
                         </div>
                         <button onClick={goToHome}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
