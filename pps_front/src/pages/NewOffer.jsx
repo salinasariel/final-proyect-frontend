@@ -74,7 +74,10 @@ const NewOffer = () => {
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="max-w-[50%]">
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            className=" dark:text-white dark: dark:bg-neutral-800 "
+          >
             <Typography variant="h6" style={{ paddingTop: "5px" }}>
               <b>Crear nueva oferta</b>
             </Typography>

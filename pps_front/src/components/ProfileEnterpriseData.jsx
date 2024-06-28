@@ -161,15 +161,7 @@ const ProfileEnterpriseData = () => {
                   Quienes somos?
                 </h2>
                 <p className="text-gray-700 dark:text-neutral-400">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aenean at libero sit amet nisi congue fringilla aliquam sed
-                  mauris. Vivamus posuere tempor turpis, et sodales est euismod
-                  non. Donec blandit nisl imperdiet suscipit eleifend. Proin
-                  ultricies turpis sit amet velit ullamcorper maximus. Sed sed
-                  blandit leo. Maecenas mattis ante lacus, eu placerat orci
-                  luctus at. Donec in ornare libero. Etiam tellus urna, posuere
-                  ac libero a, tincidunt dictum leo. Fusce pulvinar a odio id
-                  scelerisque.
+                  {userInfo.about}
                 </p>
 
                 <h2 className="text-xl font-bold mt-6 mb-4 flex gap-2">
@@ -185,9 +177,7 @@ const ProfileEnterpriseData = () => {
                   Email de contacto
                 </h2>
 
-                <p className="dark:text-neutral-400">
-                  {userInfo.contactEmail} email@gdnjjk.com
-                </p>
+                <p className="dark:text-neutral-400">{userInfo.contactEmail}</p>
 
                 <h2 className="text-xl font-bold mt-6 mb-4 flex gap-2">
                   <svg
@@ -248,6 +238,89 @@ const ProfileEnterpriseData = () => {
                 </h2>
                 <div className="flex flex-wrap">
                   <p className="dark:text-neutral-400">{userInfo.cuit}</p>
+                </div>
+
+                <h2 className="text-xl font-bold mt-6 mb-4 flex gap-2">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.5 5.25a3 3 0 0 1 3-3h3a3 3 0 0 1 3 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0 1 12 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 0 1 7.5 5.455V5.25Zm7.5 0v.09a49.488 49.488 0 0 0-6 0v-.09a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5Zm-3 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                      clipRule="evenodd"
+                    />
+                    <path d="M3 18.4v-2.796a4.3 4.3 0 0 0 .713.31A26.226 26.226 0 0 0 12 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 0 1-6.477-.427C4.047 21.128 3 19.852 3 18.4Z" />
+                  </svg>
+                  Legal
+                </h2>
+                <div className="flex flex-wrap">
+                  <p className="dark:text-neutral-400">{userInfo.legalAbout}</p>
+                </div>
+
+                <h2 className="text-xl font-bold mt-6 mb-4 flex gap-2">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 0 0 7.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 0 0 4.902-5.652l-1.3-1.299a1.875 1.875 0 0 0-1.325-.549H5.223Z" />
+                    <path
+                      fillRule="evenodd"
+                      d="M3 20.25v-8.755c1.42.674 3.08.673 4.5 0A5.234 5.234 0 0 0 9.75 12c.804 0 1.568-.182 2.25-.506a5.234 5.234 0 0 0 2.25.506c.804 0 1.567-.182 2.25-.506 1.42.674 3.08.675 4.5.001v8.755h.75a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1 0-1.5H3Zm3-6a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1-.75-.75v-3Zm8.25-.75a.75.75 0 0 0-.75.75v5.25c0 .414.336.75.75.75h3a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-.75-.75h-3Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Tipo de Empresa
+                </h2>
+                <div className="flex flex-wrap">
+                  <p className="dark:text-neutral-400">
+                    {userInfo.enterpriseType}
+                  </p>
+                </div>
+
+                <h2 className="text-xl font-bold mt-6 mb-4 flex gap-2">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path d="M21.721 12.752a9.711 9.711 0 0 0-.945-5.003 12.754 12.754 0 0 1-4.339 2.708 18.991 18.991 0 0 1-.214 4.772 17.165 17.165 0 0 0 5.498-2.477ZM14.634 15.55a17.324 17.324 0 0 0 .332-4.647c-.952.227-1.945.347-2.966.347-1.021 0-2.014-.12-2.966-.347a17.515 17.515 0 0 0 .332 4.647 17.385 17.385 0 0 0 5.268 0ZM9.772 17.119a18.963 18.963 0 0 0 4.456 0A17.182 17.182 0 0 1 12 21.724a17.18 17.18 0 0 1-2.228-4.605ZM7.777 15.23a18.87 18.87 0 0 1-.214-4.774 12.753 12.753 0 0 1-4.34-2.708 9.711 9.711 0 0 0-.944 5.004 17.165 17.165 0 0 0 5.498 2.477ZM21.356 14.752a9.765 9.765 0 0 1-7.478 6.817 18.64 18.64 0 0 0 1.988-4.718 18.627 18.627 0 0 0 5.49-2.098ZM2.644 14.752c1.682.971 3.53 1.688 5.49 2.099a18.64 18.64 0 0 0 1.988 4.718 9.765 9.765 0 0 1-7.478-6.816ZM13.878 2.43a9.755 9.755 0 0 1 6.116 3.986 11.267 11.267 0 0 1-3.746 2.504 18.63 18.63 0 0 0-2.37-6.49ZM12 2.276a17.152 17.152 0 0 1 2.805 7.121c-.897.23-1.837.353-2.805.353-.968 0-1.908-.122-2.805-.353A17.151 17.151 0 0 1 12 2.276ZM10.122 2.43a18.629 18.629 0 0 0-2.37 6.49 11.266 11.266 0 0 1-3.746-2.504 9.754 9.754 0 0 1 6.116-3.985Z" />
+                  </svg>
+                  Pagina web
+                </h2>
+                <div className="flex flex-wrap">
+                  <p className="dark:text-neutral-400">{userInfo.webPage}</p>
+                </div>
+
+                <h2 className="text-xl font-bold mt-6 mb-4 flex gap-2">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z"
+                      clipRule="evenodd"
+                    />
+                    <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
+                  </svg>
+                  Empleados
+                </h2>
+                <div className="flex flex-wrap">
+                  <p className="dark:text-neutral-400">
+                    {userInfo.employeesQuantity}
+                  </p>
                 </div>
               </div>
             </div>
