@@ -4,33 +4,8 @@ import api from "../api";
 import useTokenData from "../hooks/useTokenData";
 import ChangeUserPicture from "./ChangeUserPicture";
 import { AuthContext } from "../AuthProvider";
-import {
-  Typography,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField,
-  Grid,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  FormControl,
-  FormLabel,
-  MenuItem,
-} from "@mui/material";
-
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
-
-const LISTA = [
-  { value: "dni", label: "DNI" },
-  { value: "pasaporte", label: "Pasaporte" },
-  { value: "cedula", label: "Cédula de identidad" },
-  {value: "Libreta Civica", label: "LC"},
-];
 
 const ProfileData = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -120,7 +95,7 @@ const ProfileData = () => {
                   <button
                     href="#"
                     className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:text-[#00ADB5]   // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 dark:hover:text-[#00ADB5] "
-                    onClick={handleOpen}
+                    onClick={handleOpen} // PONER EL FORMULARIO DE EDITAR PERFIL
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -254,185 +229,6 @@ const ProfileData = () => {
           </div>
         </div>
       </div>
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
-        <DialogTitle
-          id="form-dialog-title"
-          style={{ textAlign: "center", backgroundColor: "#EEEEEE" }}
-        >
-          Editar perfil
-        </DialogTitle>
-        <button onClick={handleOpen}>Editar foto de perfil</button>
-
-        <DialogContent>
-          <form>
-            <Typography variant="subtitle1" style={{ paddingTop: "5px" }}>
-              Nombre
-            </Typography>
-            <TextField
-              id="outlined-required"
-              label="Nombre"
-              required
-              fullWidth
-              variant="outlined"
-              color="secondary"
-            />
-            <Typography variant="subtitle1" style={{ paddingTop: "5px" }}>
-              Apellido
-            </Typography>
-            <TextField
-              id="outlined-required"
-              label="Apellido"
-              required
-              fullWidth
-              variant="outlined"
-              color="secondary"
-            />
-            <TextField
-              margin="normal"
-              id="date"
-              label="Fecha de Nacimiento"
-              type="date"
-              required
-              fullWidth
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="outlined"
-              color="secondary"
-            />
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  id="tipo-documento"
-                  label="Tipo"
-                  variant="outlined"
-                  color="secondary"
-                  required
-                  select
-                >
-                  {/*aca se agrega las opciones para el tipo de documento*/}
-                  {LISTA.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
-              <Grid item xs={8}>
-                <TextField
-                  fullWidth
-                  id="numero-documento"
-                  label="Número de Documento"
-                  required
-                  variant="outlined"
-                  color="secondary"
-                />
-              </Grid>
-            </Grid>
-            <TextField
-              variant="outlined"
-              label="CUIL o CUIT"
-              fullWidth
-              required
-              margin="normal"
-              color="secondary"
-            />
-            <FormControl>
-              <FormLabel
-                id="demo-row-radio-buttons-group-label"
-                color="secondary"
-              >
-                Estado Civil
-              </FormLabel>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-              >
-                <FormControlLabel
-                  value="Soltero"
-                  control={<Radio color="secondary" />}
-                  label="Soltero"
-                />
-                <FormControlLabel
-                  value="Casado"
-                  control={<Radio color="secondary" />}
-                  label="Casado"
-                />
-                <FormControlLabel
-                  value="Divorciado"
-                  control={<Radio color="secondary" />}
-                  label="Divorciado"
-                />
-                <FormControlLabel
-                  value="Viudo"
-                  control={<Radio color="secondary" />}
-                  label="Viudo"
-                />
-              </RadioGroup>
-            </FormControl>
-            <FormControl>
-              <FormLabel
-                id="demo-row-radio-buttons-group-label"
-                color="secondary"
-              >
-                Genero
-              </FormLabel>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-              >
-                <FormControlLabel
-                  value="Masculino"
-                  control={<Radio color="secondary" />}
-                  label="Masculino"
-                />
-                <FormControlLabel
-                  value="Femenino"
-                  control={<Radio color="secondary" />}
-                  label="Femenino"
-                />
-                <FormControlLabel
-                  value="Otro"
-                  control={<Radio color="secondary" />}
-                  label="Otro"
-                />
-              </RadioGroup>
-            </FormControl>
-            <TextField
-              variant="outlined"
-              label="Correo Electrónico"
-              fullWidth
-              required
-              margin="normal"
-              color="secondary"
-            />
-            <TextField
-              variant="outlined"
-              label="Teléfono"
-              fullWidth
-              required
-              margin="normal"
-              color="secondary"
-            />
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="secondary">
-            Cancelar
-          </Button>
-          <Button onClick={handleClose} color="secondary">
-            Guardar
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

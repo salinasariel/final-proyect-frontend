@@ -52,6 +52,7 @@ const DisplayMyOffersStudent = () => {
               companyName={offer.enterprise.name}
               companyContact={offer.enterprise.email}
               offerId={offer.offers.offerId}
+              status={offer.offers.offerState}
             />
           ))}
         </div>

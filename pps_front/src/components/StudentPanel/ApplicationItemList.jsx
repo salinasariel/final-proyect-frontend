@@ -14,9 +14,7 @@ const ApplicationItemList = ({
           <td className="pl-2">{title}</td>
           <td className="pl-2">{companyName}</td>
           <td className="pl-2">{companyContact}</td>
-          <td className="pl-2 text-center">
-            {!status ? "Abierta" : "Cerrada"}
-          </td>
+          <td className="pl-2 text-center">{status ? "Abierta" : "Cerrada"}</td>
           <td className="pl-2 text-center">
             {" "}
             <CancelApplicationButton offerId={offerId} />

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import api from "../api";
-import {
-  Avatar} from "@mui/material";
+import { Avatar } from "@mui/material";
 const JobOffer = ({
   title,
   description,
@@ -33,11 +32,11 @@ const JobOffer = ({
       <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white  dark:bg-stone-900 w-90 md:max-w-sm min-w-[390px] min-h-[280px] mb-4">
         <div className="flex w-full items-center justify-between border-b pb-3 dark:border-neutral-700">
           <div className="flex items-center gap-2">
-          <Avatar
-                alt="User photo"
-                src={`data:image/jpeg;base64,${image}`}
-                sx={{ width: 60, height: 60 }}
-              />
+            <Avatar
+              alt="User photo"
+              src={`data:image/jpeg;base64,${image}`}
+              sx={{ width: 60, height: 60 }}
+            />
             <div className="text-lg font-bold text-black dark:text-white">
               {companyName}
             </div>
