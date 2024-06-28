@@ -10,6 +10,8 @@ import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import EditProfileEnterprise from "./EditProfileEnterprise";
+
 const ProfileEnterpriseData = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
@@ -326,6 +328,7 @@ const ProfileEnterpriseData = () => {
             </div>
           </div>
         </div>
+        <EditProfileEnterprise open={open} handleClose={handleClose}/>
       </div>
     </>
   );
