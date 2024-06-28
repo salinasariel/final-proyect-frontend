@@ -17,15 +17,12 @@ const DisplayMyOffersEnterprise = () => {
 
   const showData = async () => {
     try {
-      console.log(tokenData);
       if (tokenData && tokenData.userid) {
         const userIdInt = parseInt(tokenData.userid, 10);
         const response = await api.get(
           `/OffersCotroller/GetOffersByEnterprise?enterpriseId=${userIdInt}`
         );
         setOffers(response.data);
-      } else {
-        console.error("tokenData o tokenData.userid es nulo.");
       }
     } catch (error) {
       console.error("Error al obtener las ofertas:", error);

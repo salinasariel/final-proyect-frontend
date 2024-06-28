@@ -15,9 +15,9 @@ const DisplayJobOffer = ({ busqueda }) => {
   const showData = async () => {
     try {
       const response = await api.get(
-        "/OffersCotroller/GetAllOffersWithEnterprise"
+        "/OffersCotroller/GetAllOffersWithEnterpriseTrue"
       );
-      console.log(response.data);
+
       setOffers(response.data);
     } catch (error) {
       console.error("Error fetching offers:", error);
@@ -46,8 +46,11 @@ const DisplayJobOffer = ({ busqueda }) => {
 
   return (
     <>
-      {/* Vista para pantallas no móviles */}
-      <div className={`m-5 flex-row gap-7 flex-wrap p-auto ${explain ? 'hidden' : 'md:flex'}`}>
+      <div
+        className={`m-5 flex-row gap-7 flex-wrap p-auto ${
+          explain ? "hidden" : "md:flex"
+        }`}
+      >
         {empty && <h1 className="dark:text-white">No hay resultados. 😞</h1>}
         {results.map((offer, index) => (
           <JobOffer
@@ -64,8 +67,7 @@ const DisplayJobOffer = ({ busqueda }) => {
         ))}
       </div>
 
-      {/* Vista para pantallas móviles */}
-      <div className={`flex flex-col md:hidden ${explain ? 'hidden' : 'flex'}`}>
+      <div className={`flex flex-col md:hidden ${explain ? "hidden" : "flex"}`}>
         {empty && <h1 className="dark:text-white">No hay resultados. 😞</h1>}
         {results.map((offer, index) => (
           <JobOffer
@@ -82,8 +84,9 @@ const DisplayJobOffer = ({ busqueda }) => {
         ))}
       </div>
 
-      {/* Vista para pantallas móviles cuando explain es verdadero */}
-      <div className={`flex flex-col ${explain ? 'h-screen' : 'hidden'} md:hidden`}>
+      <div
+        className={`flex flex-col ${explain ? "h-screen" : "hidden"} md:hidden`}
+      >
         {explainData && (
           <ExplainJobOffer
             key={explainData.offerId}
@@ -98,7 +101,6 @@ const DisplayJobOffer = ({ busqueda }) => {
         )}
       </div>
 
-      {/* Vista combinada para pantallas no móviles cuando explain es verdadero */}
       {explain && (
         <div className="hidden md:flex h-screen">
           <div className="w-1/3 p-5 overflow-auto">

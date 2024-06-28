@@ -14,10 +14,13 @@ const Panel = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const userRol = tokenData.rol;
-      setUserInfo(userRol);
+      if (tokenData && tokenData.rol) {
+        const userRol = tokenData.rol;
+        setUserInfo(userRol);
+      } else {
+        setUserInfo(null);
+      }
     };
-
     fetchUserInfo();
   }, [tokenData]);
 

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api";
 import useTokenData from "../../hooks/useTokenData";
-import ApplicationItemList from "./ApplicationItemList";
-import ApplicationItemHeader from "./ApplicationItemHeader";
+
 import {
   Accordion,
   AccordionSummary,
@@ -15,7 +14,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  TextField,
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -35,9 +33,6 @@ const DisplayMyOffersStudent = () => {
         );
         const item = await response.data;
         setOffers(item);
-        console.log(enterprise);
-      } else {
-        console.error("Token inválido o no se pudo obtener el ID del usuario.");
       }
     } catch (error) {
       console.error("Error al obtener las ofertas:", error);
@@ -48,16 +43,12 @@ const DisplayMyOffersStudent = () => {
     GetApplications();
   }, [tokenData]);
 
-  console.log(offers);
   return (
     <div className=" my-2">
       {offers.length === 0 ? (
-        <div>
-
-        </div>
+        <div></div>
       ) : (
         <div>
-
           <Accordion className="mb-4 dark:bg-gray-800 dark:text-white">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon className="dark:text-white" />}
@@ -72,20 +63,32 @@ const DisplayMyOffersStudent = () => {
                   <TableHead className="bg-gray-100 dark:bg-gray-700">
                     <TableRow>
                       <TableCell className="dark:text-white">Oferta</TableCell>
-                      <TableCell className="dark:text-white">Nombre de la empresa</TableCell>
-                      <TableCell className="dark:text-white">Contacto</TableCell>
+                      <TableCell className="dark:text-white">
+                        Nombre de la empresa
+                      </TableCell>
+                      <TableCell className="dark:text-white">
+                        Contacto
+                      </TableCell>
                       <TableCell className="dark:text-white">Estado</TableCell>
                       <TableCell className="dark:text-white"></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {offers.map((offer, index) => (
-                      <TableRow key={offer.userId} className="dark:bg-gray-800">
-                        <TableCell className="dark:text-white">{offer.offers.tittle}</TableCell>
-                        <TableCell className="dark:text-white">{offer.enterprise.name}</TableCell>
-                        <TableCell className="dark:text-white">{offer.enterprise.email}</TableCell>
+                    {offers.map((offer, userId) => (
+                      <TableRow key={userId} className="dark:bg-gray-800">
+                        <TableCell className="dark:text-white">
+                          {offer.offers.tittle}
+                        </TableCell>
+                        <TableCell className="dark:text-white">
+                          {offer.enterprise.name}
+                        </TableCell>
+                        <TableCell className="dark:text-white">
+                          {offer.enterprise.email}
+                        </TableCell>
                         <TableCell>
-                          <CancelApplicationButton offerId={offer.offers.offerId} />
+                          <CancelApplicationButton
+                            offerId={offer.offers.offerId}
+                          />
                         </TableCell>
                       </TableRow>
                     ))}
@@ -94,7 +97,6 @@ const DisplayMyOffersStudent = () => {
               </TableContainer>
             </AccordionDetails>
           </Accordion>
-
         </div>
       )}
     </div>

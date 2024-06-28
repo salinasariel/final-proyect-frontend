@@ -1,4 +1,4 @@
-import  { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import ProfileData from "../components/ProfileData";
 import api from "../api";
 import useTokenData from "../hooks/useTokenData";
@@ -13,8 +13,12 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const userRol = tokenData.rol;
-      setUserInfo(userRol);
+      if (tokenData && tokenData.rol) {
+        const userRol = tokenData.rol;
+        setUserInfo(userRol);
+      } else {
+        setUserInfo(null);
+      }
     };
 
     fetchUserInfo();
