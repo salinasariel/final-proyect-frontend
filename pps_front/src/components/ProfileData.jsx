@@ -26,7 +26,6 @@ const ProfileData = () => {
     try {
       if (tokenData && tokenData.userid) {
         const userIdInt = await parseInt(tokenData.userid, 10);
-        console.log(userIdInt);
         const response = await api.get(`/User/GetStudentsById/${userIdInt}`);
         setCoursesFile(response.data.profilePhoto);
         setUserInfo(response.data);

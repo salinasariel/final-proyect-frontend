@@ -30,11 +30,10 @@ const ProfileEnterpriseData = () => {
     try {
       if (tokenData && tokenData.userid) {
         const userIdInt = await parseInt(tokenData.userid, 10);
-        console.log(userIdInt);
+
         const response = await api.get(`/User/GetEnterpriseById/${userIdInt}`);
         setCoursesFile(response.data.profilePhoto);
         setUserInfo(response.data);
-        console.log("traigo fotito check");
       } else {
         console.error("tokenData o tokenData.userid es nulo.");
       }
@@ -60,15 +59,11 @@ const ProfileEnterpriseData = () => {
     console.log("Archivo subido:", File);
   };
 
-  const editImage = () => {};
-
   const [showChangePicture, setShowChangePicture] = useState(false);
 
   const handleAddClick = () => {
     setShowChangePicture(true);
   };
-
-  console.log(userInfo);
 
   return (
     <>

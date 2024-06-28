@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import api from "../api";
 import useTokenData from "../hooks/useTokenData";
-import { Button } from "@mui/base";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import StudentAplication from "../components/StudentAplication";
 import Header from "../components/Header";
 
 const ExplainApplications = () => {
-  const { tokenData } = useTokenData();
   const location = useLocation();
   const { offerId } = location.state || {};
 
@@ -49,7 +47,7 @@ const ExplainApplications = () => {
           {applications.map((application, index) => (
             <StudentAplication
               key={index}
-              studentId={application.userId}              
+              studentId={application.userId}
               time={application.location}
               id={application.offerId}
             />

@@ -19,7 +19,7 @@ const JobOffer = ({
       const response = await api.get(
         `/OffersCotroller/GetOfferById?offerId=${id}`
       );
-      console.log(response.data);
+
       setLocalExplain(true);
       updateExplain(true);
       updateExplainData(response.data);
