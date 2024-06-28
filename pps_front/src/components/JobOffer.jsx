@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../api";
 import { Avatar } from "@mui/material";
+
 const JobOffer = ({
   title,
   description,
@@ -27,9 +28,12 @@ const JobOffer = ({
     }
   };
 
+  const truncatedDescription =
+    description.length > 100 ? `${description.substring(0, 200)}...` : description;
+
   return (
     <div className="scale-up-center hoveranimation p-auto">
-      <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white  dark:bg-stone-900 w-90 md:max-w-sm min-w-[390px] min-h-[280px] mb-4">
+      <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-90 md:max-w-sm min-w-[390px] min-h-[280px] mb-4">
         <div className="flex w-full items-center justify-between border-b pb-3 dark:border-neutral-700">
           <div className="flex items-center gap-2">
             <Avatar
@@ -44,7 +48,7 @@ const JobOffer = ({
           <div className="flex items-center space-x-8">
             <button
               onClick={showDataById}
-              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5]  // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 "
+              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5]"
             >
               Postularse
             </button>
@@ -59,7 +63,9 @@ const JobOffer = ({
             <h1 className="text-xl font-bold dark:text-white">{title}</h1>
             <h1 className="dark:text-neutral-400 text-sm">{time}</h1>
           </div>
-          <div className="text-sm dark:text-neutral-400">{description}</div>
+          <div className="text-sm dark:text-neutral-400">
+            {truncatedDescription}
+          </div>
         </div>
       </div>
     </div>

@@ -3,6 +3,23 @@ import api from "../../api";
 import useTokenData from "../../hooks/useTokenData";
 import ApplicationItemList from "./ApplicationItemList";
 import ApplicationItemHeader from "./ApplicationItemHeader";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  TextField,
+} from "@mui/material";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CancelApplicationButton from "./CancelApplicationButton";
 
 const DisplayMyOffersStudent = () => {
   const { tokenData } = useTokenData();
@@ -36,25 +53,48 @@ const DisplayMyOffersStudent = () => {
     <div className=" my-2">
       {offers.length === 0 ? (
         <div>
-          <ApplicationItemHeader />
+
         </div>
       ) : (
         <div>
-          <ApplicationItemHeader />
-          {offers.map((offer, index) => (
-            <ApplicationItemList
-              key={index}
-              title={offer.offers.tittle}
-              description={offer.offers.about}
-              image={offer.enterprise.profilePhoto}
-              time={offer.offers.location}
-              id={offer.offers.offerId}
-              companyName={offer.enterprise.name}
-              companyContact={offer.enterprise.email}
-              offerId={offer.offers.offerId}
-              status={offer.offers.offerState}
-            />
-          ))}
+
+          <Accordion className="mb-4 dark:bg-gray-800 dark:text-white">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon className="dark:text-white" />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>Mis postulaciones</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <TableContainer component={Paper} className="dark:bg-gray-900">
+                <Table aria-label="simple table">
+                  <TableHead className="bg-gray-100 dark:bg-gray-700">
+                    <TableRow>
+                      <TableCell className="dark:text-white">Oferta</TableCell>
+                      <TableCell className="dark:text-white">Nombre de la empresa</TableCell>
+                      <TableCell className="dark:text-white">Contacto</TableCell>
+                      <TableCell className="dark:text-white">Estado</TableCell>
+                      <TableCell className="dark:text-white"></TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {offers.map((offer, index) => (
+                      <TableRow key={offer.userId} className="dark:bg-gray-800">
+                        <TableCell className="dark:text-white">{offer.offers.tittle}</TableCell>
+                        <TableCell className="dark:text-white">{offer.enterprise.name}</TableCell>
+                        <TableCell className="dark:text-white">{offer.enterprise.email}</TableCell>
+                        <TableCell>
+                          <CancelApplicationButton offerId={offer.offers.offerId} />
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </AccordionDetails>
+          </Accordion>
+
         </div>
       )}
     </div>

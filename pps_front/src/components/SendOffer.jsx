@@ -13,8 +13,28 @@ const SendOffer = () => {
   const { title, image, id, empresName } = location.state || {};
   const { tokenData } = useTokenData();
 
-  const goToHome = () => {
-    navigate("/");
+  const sendOffer = async () => {
+    try {
+      if (tokenData && tokenData.userid) {
+        const userIdInt = parseInt(tokenData.userid, 10);
+        const applicationData = {
+          applicationID: 0,
+          offerId: id,
+          userId: userIdInt,
+          applicationState: 0,
+        };
+        const response = await api.post(
+          "/Application/ApplyForAnOffer",
+          applicationData
+        );
+        toast.success(`Se postuló correctamente.`);
+        setTimeout(goToHome, 2000);
+      } else {
+        console.error("tokenData o tokenData.userid es nulo.");
+      }
+    } catch (error) {
+      toast.error(`No es posible realizar la postulacion.`);
+    }
   };
 
   const sendOffer = async () => {

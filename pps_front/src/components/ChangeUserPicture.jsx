@@ -8,6 +8,7 @@ const ChangeUserPicture = () => {
   const [fileBase64, setFileBase64] = useState("");
   const navigate = useNavigate();
   const { tokenData } = useTokenData();
+  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -22,6 +23,7 @@ const ChangeUserPicture = () => {
   const goToHome = () => {
     navigate("/home");
   };
+
   const UpdateProfilePhoto = async () => {
     try {
       const userIdInt = parseInt(tokenData.userid, 10);
@@ -36,9 +38,11 @@ const ChangeUserPicture = () => {
   };
 
   return (
-    <div className=" flex flex-col items-start dark:bg-stone-900 dark:text-white">
+    <div className="flex flex-col items-center justify-center bg-gray-200 rounded-lg p-4 dark:bg-stone-900 dark:text-white">
       <input type="file" onChange={handleFileChange} />
-      <button onClick={UpdateProfilePhoto}>Enviar</button>
+      <button className="bg-black text-white rounded-lg px-4 py-2 mt-4" onClick={UpdateProfilePhoto}>
+        Enviar
+      </button>
     </div>
   );
 };
