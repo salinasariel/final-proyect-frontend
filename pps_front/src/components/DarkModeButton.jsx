@@ -3,28 +3,9 @@ import { useEffect, useState } from "react";
 const DarkModeButton = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === "dark");
-      if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-      }
-    } else {
-      const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches;
-      setIsDarkMode(userPrefersDark);
-      if (userPrefersDark) {
-        document.body.classList.add("dark");
-      }
-    }
-  }, []);
-
   const toggleDarkMode = () => {
-    const newTheme = !isDarkMode ? "dark" : "light";
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle("dark");
-    localStorage.setItem("theme", newTheme);
   };
 
   return (

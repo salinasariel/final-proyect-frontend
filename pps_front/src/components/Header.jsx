@@ -21,7 +21,7 @@ const Header = ({ logged, searchon, onSearchChange }) => {
 
   return (
     <>
-      <div className="bg-[#EEEEEE] sticky top-0 shadow-md dark:bg-stone-900 dark:text-white">
+      <div className="bg-[#EEEEEE] sticky top-0 shadow-md dark:bg-stone-900 dark:text-white z-50">
         <div className="flex items-center justify-between md:flex-row md:justify-between justify-center p-1">
           <div className="flex">
             <Link to="/home" className="dark:text-white">

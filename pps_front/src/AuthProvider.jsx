@@ -39,6 +39,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.setItem("theme", "light")
     setIsLoggedIn(false);
+    document.body.classList.remove("dark");
   };
 
   return (
