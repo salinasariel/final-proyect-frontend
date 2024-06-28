@@ -29,7 +29,9 @@ const JobOffer = ({
   };
 
   const truncatedDescription =
-    description.length > 100 ? `${description.substring(0, 200)}...` : description;
+    description.length > 100
+      ? `${description.substring(0, 200)}...`
+      : description;
 
   return (
     <div className="scale-up-center hoveranimation p-auto">
@@ -48,7 +50,7 @@ const JobOffer = ({
           <div className="flex items-center space-x-8">
             <button
               onClick={showDataById}
-              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5]"
+              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:text-sm dark:bg-transparent dark:text-white"
             >
               Postularse
             </button>

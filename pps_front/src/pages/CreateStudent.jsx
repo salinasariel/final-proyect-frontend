@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { TextField, Button, Typography, Box, Paper, Container } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Paper,
+  Container,
+} from "@mui/material";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import api from "../api";
@@ -16,7 +23,9 @@ const CreateStudent = () => {
     e.preventDefault();
 
     if (!fileNumber.match(/^\d{5}$/)) {
-      toast.error("El número de legajo debe tener exactamente 5 caracteres numéricos.");
+      toast.error(
+        "El número de legajo debe tener exactamente 5 caracteres numéricos."
+      );
       return;
     }
 
@@ -51,7 +60,7 @@ const CreateStudent = () => {
     <>
       <Header />
       <Container component="main" maxWidth="sm">
-        <Paper elevation={3} style={{ padding: '2rem', marginTop: '2rem' }}>
+        <Paper elevation={3} style={{ padding: "2rem", marginTop: "2rem" }}>
           <Typography variant="h5" component="h1" align="center" gutterBottom>
             Solicitud de Alta Estudiantes
           </Typography>
@@ -59,7 +68,6 @@ const CreateStudent = () => {
             <TextField
               id="fileNumber"
               label="Legajo"
-              
               margin="normal"
               required
               fullWidth
@@ -67,12 +75,10 @@ const CreateStudent = () => {
               color="secondary"
               value={fileNumber}
               onChange={(e) => setFileNumber(e.target.value)}
-              
             />
             <TextField
               id="name"
               label="Nombre"
-              
               margin="normal"
               required
               fullWidth
@@ -86,7 +92,6 @@ const CreateStudent = () => {
               id="password"
               label="Contraseña"
               type="password"
-              
               margin="normal"
               required
               fullWidth
@@ -100,7 +105,6 @@ const CreateStudent = () => {
               id="email"
               label="Email"
               type="email"
-              
               margin="normal"
               required
               fullWidth

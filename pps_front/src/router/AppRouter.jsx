@@ -9,7 +9,6 @@ import CreateStudent from "../pages/CreateStudent";
 import CreateEnterprise from "../pages/CreateEnterprise";
 import NotFound from "../pages/NotFound";
 import SendOffer from "../components/SendOffer";
-import Vermifoto from "../pages/vermifoto";
 import DownloadCV from "../pages/DownloadCV";
 import NewOffer from "../pages/NewOffer";
 import ExplainApplications from "../pages/ExplainApplications";
@@ -33,7 +32,6 @@ const AppRouter = () => {
       <Route path="/createstudent" element={<CreateStudent />} />
       <Route path="/createnterprise" element={<CreateEnterprise />} />
       <Route path="/sendoffer" element={<SendOffer />} />
-      <Route path="/vermifoto" element={<Vermifoto />} />
       <Route path="/downloadcv" element={<DownloadCV />} />
       <Route path="/newoffer" element={<NewOffer />} />
       <Route path="/explainApplications" element={<ExplainApplications />} />
