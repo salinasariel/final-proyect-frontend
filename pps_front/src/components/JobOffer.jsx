@@ -35,7 +35,7 @@ const JobOffer = ({
 
   return (
     <div className="scale-up-center hoveranimation p-auto">
-      <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-90 md:max-w-sm min-w-[390px] min-h-[280px] mb-4">
+      <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-90 md:max-w-sm min-w-[390px] min-h-[280px] ">
         <div className="flex w-full items-center justify-between border-b pb-3 dark:border-neutral-700">
           <div className="flex items-center gap-2">
             <Avatar

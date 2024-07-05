@@ -41,7 +41,6 @@ const ExplainJobOffer = ({
         <div className="rounded-xl border dark:border-0 p-5 shadow-md bg-white dark:bg-stone-900 w-full h-screen overflow-hidden">
           <div className="flex w-full items-center justify-between border-b pb-3 overflow-hidden">
             <div className="flex items-center gap-2 overflow-hidden">
-              
               <div className="text-lg font-bold text-black dark:text-white">
                 {empresName}
               </div>
@@ -64,7 +63,7 @@ const ExplainJobOffer = ({
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 dark:text-white"
               >
                 <path
                   strokeLinecap="round"

@@ -47,27 +47,10 @@ const DisplayJobOffer = ({ busqueda }) => {
   return (
     <>
       <div
-        className={`m-5 flex-row gap-7 flex-wrap p-auto ${
-          explain ? "hidden" : "md:flex"
+        className={`flex-row gap-3 flex-wrap ${
+          explain ? "hidden" : "md:flex md:m-4 md:justify-center"
         }`}
       >
-        {empty && <h1 className="dark:text-white">No hay resultados. 😞</h1>}
-        {results.map((offer, index) => (
-          <JobOffer
-            key={index}
-            title={offer.tittle}
-            description={offer.about}
-            image={offer.enterprise.profilePhoto}
-            time={offer.location}
-            id={offer.offerId}
-            companyName={offer.enterprise.name}
-            updateExplain={setExplain}
-            updateExplainData={updateExplainData}
-          />
-        ))}
-      </div>
-
-      <div className={`flex flex-col md:hidden ${explain ? "hidden" : "flex"}`}>
         {empty && <h1 className="dark:text-white">No hay resultados. 😞</h1>}
         {results.map((offer, index) => (
           <JobOffer
