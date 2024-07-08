@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://localhost:7047/api/',
+    baseURL: 'http://bolsadetrabajo.somee.com/api/',
     timeout: 100000,
     headers: {
         'Content-Type': 'application/json'
