@@ -76,7 +76,7 @@ const NewOffer = () => {
         <div className="max-w-[50%]">
           <form
             onSubmit={handleSubmit}
-            className=" dark:text-white dark: dark:bg-neutral-800 "
+            className=" dark:text-white dark:bg-neutral-800 "
           >
             <Typography variant="h6" style={{ paddingTop: "5px" }}>
               <b>Crear nueva oferta</b>
@@ -195,6 +195,7 @@ const NewOffer = () => {
                 <MenuItem value="false">No</MenuItem>
               </Select>
             </FormControl>
+
             <Button type="submit" variant="contained" color="primary">
               Crear Oferta
             </Button>

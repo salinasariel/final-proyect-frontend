@@ -30,32 +30,31 @@ const StudentAplication = ({ id, studentId }) => {
   };
   return (
     <div className="scale-up-center hoveranimation p-auto">
-      <div className="rounded-xl border p-5 shadow-md bg-white w-90 md:max-w-sm  min-w-[390px] min-h-[280px]  mb-4 ">
-        <div className="flex w-full items-center justify-between border-b pb-3">
-          <div className="flex items-center gap-2">
-            <Avatar
-              alt="User photo"
-              src={`data:image/jpeg;base64,${coursesFile}`}
-              sx={{ width: 100, height: 100 }}
-            />
-            <div className="text-lg font-bold text-black"></div>
-          </div>
-          <div className="flex items-center space-x-8">
-            <button
-              onClick={gotopdf}
-              className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white"
-            >
-              Descargar CV
-            </button>
-            <div className="text-xs text-neutral-500">#{id}</div>
-          </div>
-        </div>
-
+      <div className="dark:bg-stone-900 dark:text-white dark:border-0 rounded-xl border p-5 shadow-md bg-white w-90 md:max-w-sm  min-w-[390px] min-h-[280px] mb-4 ">
         <div className="mt-4 mb-6">
-          <div className="mb-3 flex justify-between items-center">
-            <h1 className="text-xl font-bold">{userInfo.name} </h1>
+          <div className="mb-3 justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Avatar
+                alt="User photo"
+                src={`data:image/jpeg;base64,${coursesFile}`}
+                sx={{ width: 70, height: 70 }}
+              />
+              <div className=" items-center gap-4">
+                <h1 className="text-xl font-bold"> {userInfo.name}</h1>
+                <h1 className="">{userInfo.tittle} </h1>
+              </div>
+            </div>
           </div>
-          <div className="text-sm text-neutral-600">{userInfo.about}</div>
+          <div className="text-sm text-neutral-600 dark:text-white">
+            {userInfo.about}
+          </div>
+
+          <button
+            onClick={gotopdf}
+            className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white my-5 dark:bg-stone-900 dark:hover:bg-stone-700"
+          >
+            Descargar CV
+          </button>
         </div>
       </div>
     </div>

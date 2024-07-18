@@ -42,8 +42,8 @@ const ExplainApplications = () => {
     <>
       <Header />
       {!explain && (
-        <div className="m-5 md:flex flex-row gap-7 md:flex-wrap p-auto">
-          {empty && <h1>No hay postulantes 😞</h1>}
+        <div className="m-5 md:flex flex-row gap-7 md:flex-wrap p-auto ">
+          {empty && <h1 className="dark:text-white">No hay postulantes 😞</h1>}
           {applications.map((application, index) => (
             <StudentAplication
               key={index}
