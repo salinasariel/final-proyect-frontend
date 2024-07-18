@@ -25,7 +25,7 @@ const StudentAplication = ({ id, studentId }) => {
 
   const gotopdf = () => {
     navigate("/downloadcv", {
-      state: { userInfo },
+      state: { userInfo: userInfo, direction: "panel" },
     });
   };
   return (

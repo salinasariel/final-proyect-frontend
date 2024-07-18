@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://bolsadetrabajo.somee.com/api/',
+    baseURL: 'https://final-proyect-backend-im4k.onrender.com/api/',
     timeout: 100000,
     headers: {
         'Content-Type': 'application/json'

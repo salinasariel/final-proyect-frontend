@@ -3,15 +3,16 @@ import { TextField, Button, Typography } from "@mui/material";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import api from "../api";
-
 import { toast } from "react-toastify";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const CreateEnterprise = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
-  const [cuitnumber, setcuitNumber] = useState("");
+  const [cuitnumber, setcuitNumber] = useState("");  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,11 +29,17 @@ const CreateEnterprise = () => {
     try {
       const response = await api.post("/User/CreateEnterprise", enterpriseData);
       toast.success(`Estudiante creado correctamente con ID: ${response.data}`);
+      goToHome();
     } catch (error) {
       console.error("Error creando estudiante:", error);
       toast.error(`Error creando estudiante: ${error.message}`);
     }
   };
+
+  
+  const goToHome = () => {
+    navigate(`/login`);
+}
 
   return (
     <>

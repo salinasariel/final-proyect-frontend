@@ -12,12 +12,14 @@ import Footer from "../components/Footer";
 import api from "../api";
 
 import { toast } from "react-toastify";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const CreateStudent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fileNumber, setFileNumber] = useState("");
+  const [fileNumber, setFileNumber] = useState("");  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,11 +52,16 @@ const CreateStudent = () => {
     try {
       const response = await api.post("User/register_student", studentData);
       toast.success(`Estudiante creado correctamente con ID: ${response.data}`);
+      goToHome();
     } catch (error) {
       console.error("Error creando estudiante:", error);
       toast.error(`Error creando estudiante: ${error.message}`);
     }
   };
+
+  const goToHome = () => {
+    navigate(`/login`);
+}
 
   return (
     <>

@@ -15,7 +15,7 @@ import LogoUtn from "../assets/images/logo-utn.png";
 const DownloadCV = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { userInfo } = location.state || {};
+    const { userInfo, direction } = location.state || {};
 
     useEffect(() => {
         if (userInfo) {
@@ -42,7 +42,7 @@ const DownloadCV = () => {
     };
 
     const goToHome = () => {
-        navigate('/panel');
+        navigate(`/${direction}`);
     }
 
     if (!userInfo) {

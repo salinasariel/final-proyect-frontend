@@ -39,7 +39,7 @@ const ProfileData = () => {
 
   const gotopdf = () => {
     navigate("/downloadcv", {
-      state: { userInfo },
+      state: { userInfo: userInfo, direction: "profile" },
     });
   };
 

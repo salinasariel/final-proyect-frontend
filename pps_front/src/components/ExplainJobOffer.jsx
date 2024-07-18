@@ -1,7 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider";
 import { toast } from "react-toastify";
+import useTokenData from "../hooks/useTokenData";
 
 const ExplainJobOffer = ({
   title,
@@ -15,6 +16,8 @@ const ExplainJobOffer = ({
   const [localExplain, setLocalExplain] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { tokenData } = useTokenData();
+  const [userInfo, setUserInfo] = useState("");
 
   const closeExplain = () => {
     console.log("Cerrando explicación");
@@ -34,6 +37,18 @@ const ExplainJobOffer = ({
     }
   };
 
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (tokenData && tokenData.rol) {
+        const userRol = tokenData.rol;
+        setUserInfo(userRol);
+      } else {
+        setUserInfo(null);
+      }
+    };
+    fetchUserInfo();
+  }, [tokenData]);
+
   return (
     <div style={{ overflow: "hidden" }}>
       <div className=""></div>
@@ -46,12 +61,16 @@ const ExplainJobOffer = ({
               </div>
             </div>
             <div className="flex items-center space-x-8">
+            {userInfo == "Student" && (
               <button
                 onClick={continueOffer}
                 className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold hover:bg-[#00ADB5]  // dark:bg-neutral-800  dark:text-gray-50 dark:border-0 "
               >
+            
+            
                 Continuar
               </button>
+              )}
               <div className="text-xs text-neutral-500 dark:text-neutral-400">
                 #{id}
               </div>

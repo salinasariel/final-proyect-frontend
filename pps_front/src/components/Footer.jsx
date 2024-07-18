@@ -1,10 +1,13 @@
 import LogoUtn from "../assets/images/logoutn.png";
 import "../assets/animations.css";
-
+import { AuthContext } from "../AuthProvider";
+import { useState, useContext, useEffect } from "react";
 const Footer = ({ youarenterprise, moreinfo }) => {
+  
+  const { isLoggedIn, logout } = useContext(AuthContext);
   return (
     <div className="fixed bottom-0 w-full bg-[#EEEEEE] dark:bg-stone-900 dark:text-white">
-      {youarenterprise && (
+       {!isLoggedIn && (
         <div className="bg-[#f5f5f5] sticky top-0 flex justify-center dark:bg-stone-900">
           <b>
             <p className="text-center mt-4 text-xs">
