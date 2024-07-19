@@ -1,11 +1,3 @@
-.text-input input {
-  color: black; 
-}
-
-.dark .text-input input {
-  color: white; 
-}
-
 
 .dark .menu-item {
   color: white; 
@@ -13,4 +5,8 @@
 
 .dark .select-menu {
   background-color:purple; 
+}
+
+.dark .MuiInputBase-root {
+  color: white; 
 }

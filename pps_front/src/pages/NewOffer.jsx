@@ -97,9 +97,7 @@ const NewOffer = () => {
                     color="secondary"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    InputProps={{
-                      className: "text-input", 
-                    }}
+                    
                   />
                 </Grid>
                 
@@ -115,9 +113,7 @@ const NewOffer = () => {
                     color="secondary"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    InputProps={{
-                      className: "text-input", 
-                    }}
+                    
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -132,9 +128,7 @@ const NewOffer = () => {
                     color="secondary"
                     value={sector}
                     onChange={(e) => setSector(e.target.value)}
-                    InputProps={{
-                      className: "text-input", 
-                    }}
+                    
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -149,9 +143,7 @@ const NewOffer = () => {
                     color="secondary"
                     value={skillsRequired}
                     onChange={(e) => setSkillsRequired(e.target.value)}
-                    InputProps={{
-                      className: "text-input", 
-                    }}
+                    
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -163,7 +155,7 @@ const NewOffer = () => {
                       onChange={(e) => setImmediateIncorporation(e.target.value)}
                       required
                       color="secondary"
-                      className="text-input dark:text-white dark:bg-neutral-900"
+                      className=" dark:bg-neutral-900"
                       MenuProps={{
                         classes: {
                           paper: "select-menu",
@@ -184,7 +176,7 @@ const NewOffer = () => {
                       onChange={(e) => setIsIntern(e.target.value)}
                       required
                       color="secondary"
-                      className=" text-input dark:text-white dark:bg-neutral-900"
+                      className="  dark:bg-neutral-900"
                       MenuProps={{
                         classes: {
                           paper: "select-menu", 
@@ -207,7 +199,7 @@ const NewOffer = () => {
                     value={careersInterested}
                     onChange={(e) => setCareersInterested(e.target.value)}
                     color="secondary"
-                      className="text-input dark:text-white dark:bg-neutral-900"
+                      className=" dark:bg-neutral-900"
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -221,7 +213,7 @@ const NewOffer = () => {
                     value={internTime}
                     onChange={(e) => setInternTime(e.target.value)}
                     color="secondary"
-                      className="text-input dark:text-white dark:bg-neutral-900"
+                      className=" dark:bg-neutral-900"
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -233,7 +225,7 @@ const NewOffer = () => {
                       onChange={(e) => setIsPaid(e.target.value)}
                       required
                       color="secondary"
-                      className=" text-input dark:text-white dark:bg-neutral-900"
+                      className="  dark:bg-neutral-900"
                       MenuProps={{
                         classes: {
                           paper: "select-menu", 
@@ -258,7 +250,8 @@ const NewOffer = () => {
                     rows={4}
                     value={about}
                     onChange={(e) => setAbout(e.target.value)}
-                    className=" text-input dark:text-white dark:bg-neutral-900"
+                    className=" dark:bg-neutral-900"
+                    
                   />
                 </Grid>
                 <Grid item xs={12}>

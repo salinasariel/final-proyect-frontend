@@ -44,8 +44,8 @@ const SendOffer = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="scale-up-vertical-center flex justify-center items-center flex-1 p-4">
-        <div className="w-full max-w-4xl bg-white rounded-xl border p-5 shadow-md">
+      <div className="scale-up-vertical-center flex justify-center items-center flex-1 p-4 ">
+        <div className="w-full max-w-4xl bg-white rounded-xl border p-5 shadow-md dark:bg-black dark:border-0 dark:text-white">
           <div className="flex w-full items-center justify-between border-b pb-3">
             <div className="flex items-center gap-2">
               <b>¿Está seguro de aplicar para el puesto de {title}?</b>
@@ -71,7 +71,7 @@ const SendOffer = () => {
             <div className="flex justify-end mt-4">
               <button
                 onClick={sendOffer}
-                className="rounded-2xl border bg-neutral-100 px-8 py-2 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white"
+                className="rounded-2xl border bg-neutral-100 px-8 py-2 text-xs font-semibold hover:bg-[#00ADB5] hover:text-white dark:border-0 dark:bg-stone-900 dark:hover:bg-stone-700"
               >
                 Sí, aplicar
               </button>
