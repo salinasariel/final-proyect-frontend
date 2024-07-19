@@ -15,7 +15,12 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Container,
+  Box,
+  Paper,
+  Grid
 } from "@mui/material";
+import "../Css/customText.css";
 
 const NewOffer = () => {
   const { tokenData } = useTokenData();
@@ -72,138 +77,202 @@ const NewOffer = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className="max-w-[50%]">
-          <form
-            onSubmit={handleSubmit}
-            className=" dark:text-white dark: dark:bg-neutral-800 "
-          >
-            <Typography variant="h6" style={{ paddingTop: "5px" }}>
+      <Container>
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+          <Paper elevation={3} sx={{ p: 4, maxWidth: 800, width: "100%" }} className=" dark:text-white  dark:bg-neutral-800 ">
+            <Typography variant="h5" component="h2" gutterBottom>
               <b>Crear nueva oferta</b>
             </Typography>
-            <TextField
-              id="title"
-              margin="normal"
-              label="Título"
-              required
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <TextField
-              id="about"
-              margin="normal"
-              label="Descripción"
-              required
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              value={about}
-              onChange={(e) => setAbout(e.target.value)}
-            />
-            <TextField
-              id="location"
-              margin="normal"
-              label="Ubicación de la oferta"
-              required
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            <TextField
-              id="sector"
-              variant="outlined"
-              label="Sector de la compañía"
-              fullWidth
-              required
-              margin="normal"
-              value={sector}
-              onChange={(e) => setSector(e.target.value)}
-            />
-            <TextField
-              id="skillsRequired"
-              variant="outlined"
-              label="Habilidades requeridas"
-              fullWidth
-              required
-              margin="normal"
-              value={skillsRequired}
-              onChange={(e) => setSkillsRequired(e.target.value)}
-            />
-            <FormControl fullWidth margin="normal">
-              <InputLabel id="immediateIncorporation-label">
-                ¿Incorporación inmediata?
-              </InputLabel>
-              <Select
-                labelId="immediateIncorporation-label"
-                id="immediateIncorporation"
-                value={immediateIncorporation}
-                onChange={(e) => setImmediateIncorporation(e.target.value)}
-                required
-              >
-                <MenuItem value="true">Sí</MenuItem>
-                <MenuItem value="false">No</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl fullWidth margin="normal">
-              <InputLabel id="isIntern-label">¿Es intern?</InputLabel>
-              <Select
-                labelId="isIntern-label"
-                id="isIntern"
-                value={isIntern}
-                onChange={(e) => setIsIntern(e.target.value)}
-                required
-              >
-                <MenuItem value="true">Sí</MenuItem>
-                <MenuItem value="false">No</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField
-              id="careersInterested"
-              variant="outlined"
-              label="Carreras interesadas"
-              fullWidth
-              required
-              margin="normal"
-              value={careersInterested}
-              onChange={(e) => setCareersInterested(e.target.value)}
-            />
-            <TextField
-              id="internTime"
-              variant="outlined"
-              label="Tiempo de internado"
-              fullWidth
-              required
-              margin="normal"
-              value={internTime}
-              onChange={(e) => setInternTime(e.target.value)}
-            />
-            <FormControl fullWidth margin="normal">
-              <InputLabel id="isPaid-label">¿Es pago?</InputLabel>
-              <Select
-                labelId="isPaid-label"
-                id="isPaid"
-                value={isPaid}
-                onChange={(e) => setIsPaid(e.target.value)}
-                required
-              >
-                <MenuItem value="true">Sí</MenuItem>
-                <MenuItem value="false">No</MenuItem>
-              </Select>
-            </FormControl>
-            <Button type="submit" variant="contained" color="primary">
-              Crear Oferta
-            </Button>
-          </form>
-        </div>
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography variant="body1">Título</Typography>
+                  <TextField
+                    id="title"
+                    className="dark:bg-neutral-900"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    color="secondary"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    InputProps={{
+                      className: "text-input", 
+                    }}
+                  />
+                </Grid>
+                
+                <Grid item xs={12}>
+                  <Typography variant="body1">Ubicación de la oferta</Typography>
+                  <TextField
+                    id="location"
+                    className="dark:bg-neutral-900"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    color="secondary"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    InputProps={{
+                      className: "text-input", 
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body1">Sector de la compañía</Typography>
+                  <TextField
+                    id="sector"
+                    className="dark:bg-neutral-900"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    color="secondary"
+                    value={sector}
+                    onChange={(e) => setSector(e.target.value)}
+                    InputProps={{
+                      className: "text-input", 
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body1">Habilidades requeridas</Typography>
+                  <TextField
+                    id="skillsRequired"
+                    className="dark:bg-neutral-900"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    color="secondary"
+                    value={skillsRequired}
+                    onChange={(e) => setSkillsRequired(e.target.value)}
+                    InputProps={{
+                      className: "text-input", 
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="body1">¿Incorporación inmediata?</Typography>
+                  <FormControl fullWidth margin="dense" variant="outlined">
+                    <Select
+                      id="immediateIncorporation"
+                      value={immediateIncorporation}
+                      onChange={(e) => setImmediateIncorporation(e.target.value)}
+                      required
+                      color="secondary"
+                      className="text-input dark:text-white dark:bg-neutral-900"
+                      MenuProps={{
+                        classes: {
+                          paper: "select-menu",
+                        },
+                      }}
+                    >
+                      <MenuItem value="true" className="menu-item ">Sí</MenuItem>
+                      <MenuItem value="false" className="menu-item ">No</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="body1">¿Es intern?</Typography>
+                  <FormControl fullWidth margin="dense" variant="outlined">
+                    <Select
+                      id="isIntern"
+                      value={isIntern}
+                      onChange={(e) => setIsIntern(e.target.value)}
+                      required
+                      color="secondary"
+                      className=" text-input dark:text-white dark:bg-neutral-900"
+                      MenuProps={{
+                        classes: {
+                          paper: "select-menu", 
+                        },
+                      }}
+                    >
+                      <MenuItem value="true" className="menu-item ">Sí</MenuItem>
+                      <MenuItem value="false" className="menu-item ">No</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="body1">Carreras interesadas</Typography>
+                  <TextField
+                    id="careersInterested"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    value={careersInterested}
+                    onChange={(e) => setCareersInterested(e.target.value)}
+                    color="secondary"
+                      className="text-input dark:text-white dark:bg-neutral-900"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="body1">Tiempo de internado</Typography>
+                  <TextField
+                    id="internTime"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    value={internTime}
+                    onChange={(e) => setInternTime(e.target.value)}
+                    color="secondary"
+                      className="text-input dark:text-white dark:bg-neutral-900"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="body1">¿Es pago?</Typography>
+                  <FormControl fullWidth margin="dense" variant="outlined">
+                    <Select
+                      id="isPaid"
+                      value={isPaid}
+                      onChange={(e) => setIsPaid(e.target.value)}
+                      required
+                      color="secondary"
+                      className=" text-input dark:text-white dark:bg-neutral-900"
+                      MenuProps={{
+                        classes: {
+                          paper: "select-menu", 
+                        },
+                      }}
+                    >
+                      <MenuItem value="true" className="menu-item">Sí</MenuItem>
+                      <MenuItem value="false" className="menu-item">No</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body1">Descripción</Typography>
+                  <TextField
+                    id="about"
+                    required
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    color="secondary"
+                    multiline
+                    rows={4}
+                    value={about}
+                    onChange={(e) => setAbout(e.target.value)}
+                    className=" text-input dark:text-white dark:bg-neutral-900"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Box mt={2}>
+                    <Button type="submit" variant="contained" color="secondary" fullWidth>
+                      Crear Oferta
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+            </form>
+          </Paper>
+        </Box>
+      </Container>
       <Footer youarenterprise={true} moreinfo={true} />
     </>
   );
