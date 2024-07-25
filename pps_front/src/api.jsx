@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const api = axios.create({
     baseURL: 'https://final-proyect-backend-im4k.onrender.com/api/',
+    //baseURL: 'https://localhost:7047/api/',
     timeout: 100000,
     headers: {
         'Content-Type': 'application/json'

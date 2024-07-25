@@ -36,7 +36,11 @@ const JobOffer = ({
   const [authorizedEnterprises, setAuthorizedEnterprise] = useState([]);
   const [pendingOffers, setPendingOffers] = useState([]);
   const [authorizedOffers, setAuthorizedOffers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+
+  // States for search terms
+  const [searchTermOffers, setSearchTermOffers] = useState("");
+  const [searchTermStudents, setSearchTermStudents] = useState("");
+  const [searchTermEnterprises, setSearchTermEnterprises] = useState("");
 
   const showOfferData = async () => {
     try {
@@ -51,7 +55,7 @@ const JobOffer = ({
       setPendingOffers(pending);
       setAuthorizedOffers(authorized);
     } catch (error) {
-      console.error("Error obteniendo estudiantes:", error);
+      console.error("Error obteniendo ofertas:", error);
     }
   };
 
@@ -64,7 +68,7 @@ const JobOffer = ({
       toast.success(`Estado de oferta cambiado correctamente.`);
       showOfferData();
     } catch (error) {
-      console.error("Error obteniendo estudiantes:", error);
+      console.error("Error cambiando estado de oferta:", error);
     }
   };
 
@@ -91,7 +95,7 @@ const JobOffer = ({
       toast.success(`Estado de estudiante cambiado correctamente.`);
       showStudentData();
     } catch (error) {
-      console.error("Error obteniendo estudiantes:", error);
+      console.error("Error cambiando estado de estudiante:", error);
     }
   };
 
@@ -110,7 +114,7 @@ const JobOffer = ({
       setPendingEnterprise(pending);
       setAuthorizedEnterprise(authorized);
     } catch (error) {
-      console.error("Error obteniendo estudiantes:", error);
+      console.error("Error obteniendo empresas:", error);
     }
   };
 
@@ -119,47 +123,56 @@ const JobOffer = ({
       const response = await api.put(
         `/User/ChangeStateEnterprise/${enterpriseId}`
       );
-      setStudents(response.data);
+      setEnterprises(response.data);
 
       toast.success(`Estado de empresa cambiado correctamente.`);
       showEnterpriseData();
     } catch (error) {
-      console.error("Error obteniendo estudiantes:", error);
+      console.error("Error cambiando estado de empresa:", error);
     }
   };
+
   useEffect(() => {
     showStudentData();
     showEnterpriseData();
     showOfferData();
   }, []);
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+  const handleSearchOffers = (event) => {
+    setSearchTermOffers(event.target.value);
+  };
+
+  const handleSearchStudents = (event) => {
+    setSearchTermStudents(event.target.value);
+  };
+
+  const handleSearchEnterprises = (event) => {
+    setSearchTermEnterprises(event.target.value);
   };
 
   const filteredPendingOffers = pendingOffers.filter((offer) =>
-    offer.tittle.toLowerCase().includes(searchTerm.toLowerCase())
+    offer.tittle.toLowerCase().includes(searchTermOffers.toLowerCase())
   );
 
   const filteredAuthorizedOffers = authorizedOffers.filter((offer) =>
-    offer.tittle.toLowerCase().includes(searchTerm.toLowerCase())
+    offer.tittle.toLowerCase().includes(searchTermOffers.toLowerCase())
   );
 
   const filteredPendingEnterprises = pendingEnterprises.filter((enterprise) =>
-    enterprise.name.toLowerCase().includes(searchTerm.toLowerCase())
+    enterprise.name.toLowerCase().includes(searchTermEnterprises.toLowerCase())
   );
 
   const filteredAuthorizedEnterprises = authorizedEnterprises.filter(
     (enterprise) =>
-      enterprise.name.toLowerCase().includes(searchTerm.toLowerCase())
+      enterprise.name.toLowerCase().includes(searchTermEnterprises.toLowerCase())
   );
 
   const filteredPendingStudents = pendingStudents.filter((student) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    student.name.toLowerCase().includes(searchTermStudents.toLowerCase())
   );
 
   const filteredAuthorizedStudents = authorizedStudents.filter((student) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    student.name.toLowerCase().includes(searchTermStudents.toLowerCase())
   );
 
   return (
@@ -174,9 +187,9 @@ const JobOffer = ({
           variant="outlined"
           fullWidth
           margin="normal"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="dark:text-white  dark:bg-gray-700"
+          value={searchTermOffers}
+          onChange={handleSearchOffers}
+          className="dark:text-white dark:bg-gray-700"
         />
 
         <Accordion className="mb-4 dark:bg-gray-800 dark:text-white">
@@ -338,9 +351,9 @@ const JobOffer = ({
           variant="outlined"
           fullWidth
           margin="normal"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="dark:text-white  dark:bg-gray-700"
+          value={searchTermStudents}
+          onChange={handleSearchStudents}
+          className="dark:text-white dark:bg-gray-700"
         />
 
         <Accordion className="mb-4 dark:bg-gray-800 dark:text-white">
@@ -496,9 +509,9 @@ const JobOffer = ({
           variant="outlined"
           fullWidth
           margin="normal"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="dark:text-white  dark:bg-gray-700"
+          value={searchTermEnterprises}
+          onChange={handleSearchEnterprises}
+          className="dark:text-white dark:bg-gray-700"
         />
 
         <Accordion className="mb-4 dark:bg-gray-800 dark:text-white">
